@@ -3,7 +3,7 @@ PATH
   specs:
     crowdblog-core (0.0.1)
       jquery-rails
-      rails (~> 3.2.1)
+      rails (~> 3.2)
 
 GEM
   remote: http://rubygems.org/

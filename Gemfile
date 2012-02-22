@@ -8,6 +8,7 @@ gemspec
 # Gems used by the dummy application (needs to be here instead of the gemspec)
 gem "jquery-rails"
 gem 'carrierwave'
+gem 'devise'
 gem 'gravtastic'
 gem 'state_machine'
 

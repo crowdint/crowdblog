@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   #   leave the dependencies here so our engine require those gems when added on base apps
   s.add_dependency 'jquery-rails'
   s.add_dependency 'carrierwave'
+  s.add_dependency 'devise'
   s.add_dependency 'gravtastic'
   s.add_dependency 'state_machine'
 

@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave'
   s.add_dependency 'devise'
   s.add_dependency 'gravtastic'
+  s.add_dependency 'omniauth-google-apps'
+  s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'state_machine'
 
   s.add_development_dependency 'fuubar'

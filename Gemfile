@@ -10,6 +10,8 @@ gem "jquery-rails"
 gem 'carrierwave'
 gem 'devise'
 gem 'gravtastic'
+gem 'omniauth-google-apps'
+gem 'omniauth-google-oauth2'
 gem 'state_machine'
 
 # Declare any dependencies that are still in development here instead of in

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/jodosha/vestal_versions.git
+  revision: ef4334ccadf1077f4fa0e72ae515ddf7d00a8ad7
+  specs:
+    vestal_versions (1.2.2)
+      activerecord (>= 3.1.0)
+      activesupport (>= 3.1.0)
+
 PATH
   remote: .
   specs:
@@ -129,3 +137,4 @@ DEPENDENCIES
   simplecov
   simplecov-rcov-text
   sqlite3
+  vestal_versions!

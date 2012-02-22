@@ -8,6 +8,7 @@ gemspec
 # Gems used by the dummy application (needs to be here instead of the gemspec)
 gem "jquery-rails"
 gem 'carrierwave'
+gem 'state_machine'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

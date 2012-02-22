@@ -139,4 +139,5 @@ DEPENDENCIES
   simplecov
   simplecov-rcov-text
   sqlite3
+  state_machine
   vestal_versions!

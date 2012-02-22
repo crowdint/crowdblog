@@ -13,6 +13,7 @@ PATH
       carrierwave
       jquery-rails
       rails (~> 3.2)
+      state_machine
 
 GEM
   remote: http://rubygems.org/
@@ -138,5 +139,4 @@ DEPENDENCIES
   simplecov
   simplecov-rcov-text
   sqlite3
-  state_machine
   vestal_versions!

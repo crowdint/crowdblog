@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    crowdblog_core (0.0.1)
+    crowdblog-core (0.0.1)
+      jquery-rails
       rails (~> 3.2.1)
 
 GEM
@@ -92,6 +93,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  crowdblog_core!
+  crowdblog-core!
   jquery-rails
   sqlite3

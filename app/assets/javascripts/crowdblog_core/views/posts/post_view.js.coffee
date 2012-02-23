@@ -7,7 +7,7 @@ $ ->
       'click .publish' : 'togglePublish'
 
     template:
-      JST["templates/posts/post"]
+      JST["crowdblog_core/templates/posts/post"]
 
     render: ->
       this.$el.html(this.template({post: this.model.toJSON(), publisher: PostsApp.publisher}))

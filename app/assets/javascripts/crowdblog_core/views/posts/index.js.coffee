@@ -7,7 +7,7 @@ $ ->
       PostsApp.Posts.on('reset', this.addAllPosts, this)
 
     template:
-      JST["templates/posts/index"]
+      JST["crowdblog_core/templates/posts/index"]
 
     render: ->
       this.$el.html(this.template())

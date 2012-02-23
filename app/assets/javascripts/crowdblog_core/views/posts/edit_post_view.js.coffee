@@ -5,7 +5,7 @@ $ ->
       'click .update' : 'updatePost'
 
     template:
-      JST["templates/posts/edit"]
+      JST["crowdblog_core/templates/posts/edit"]
 
     render: ->
       this.model.fetch()

@@ -13,6 +13,13 @@ gem 'gravtastic'
 gem 'omniauth-google-apps'
 gem 'omniauth-google-oauth2'
 gem 'state_machine'
+gem 'slim-rails'
+
+group :assets do
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
+end
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

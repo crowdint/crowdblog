@@ -1,0 +1,59 @@
+<% @post ||= CrowdblogCore::Post.new title: '', body: '' %>
+<h2><%= @isNew ? 'Edit' : 'New' %> Post</h2>
+
+<form accept-charset="UTF-8" action="/" class="form-horizontal" method="post">
+  <fieldset>
+    <div class="control-group title">
+      <label class="control-label" for="post_title">Title</label>
+      <div class="controls">
+        <input class="input-xlarge span7" id="post_title" name="post_title" type="text" value="<%= @post.title.html_safe %>">
+        <span class="help-inline title"></span>
+      </div>
+    </div>
+
+    <div class="control-group body">
+      <label class="control-label" for="post_body">Body</label>
+      <div class="controls">
+        <textarea class="span9" id="post_body" name="post_body" rows="30">
+          <%= @post.body.html_safe %>
+        </textarea>
+        <span class="help-inline">
+          <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown syntax</a>
+        </span>
+      </div>
+    </div>
+
+    <% unless @isNew %>
+      <div id="attachments row">
+        <h2>Attachments</h2>
+
+        <div class="span8 attachment-list">
+          <% for asset in @post.assets do %>
+            <div class="attachment">
+              <%= asset.attachment.url %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="span4">
+          <div id="uploader"></div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-actions">
+      <div class="row">
+        <div class="span1">
+          <button class="btn btn-primary update">Save</button>
+        </div>
+        <div class="span1">
+          <button class="btn btn-danger cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="✓">
+  </div>
+</form>

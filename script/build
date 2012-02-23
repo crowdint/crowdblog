@@ -18,6 +18,7 @@ bundle install
 
 echo "-- Build project"
 export DISPLAY=:0.0
+RAILS_ENV=test rake db:migrate
 bundle exec rake
 EXIT_CODE=$?
 

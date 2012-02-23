@@ -1,5 +1,5 @@
 class PostSweeper < ActionController::Caching::Sweeper
-  observe Post
+  observe CrowdblogCore::Post
 
   def after_create(post)
     expire_all(post)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe CrowdblogCore::Post do
   describe "#regenerate_permalink" do
     it "generates the permalink based on the post title" do
       subject.title = 'A big long post title'
@@ -39,7 +39,7 @@ describe Post do
   end
 
   describe "#publish_if_allowed" do
-    let(:user) { User.new }
+    let(:user) { CrowdblogCore::User.new }
     context "user is publisher" do
       before do
         user.is_publisher = true

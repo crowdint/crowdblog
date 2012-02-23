@@ -7,9 +7,11 @@ gemspec
 
 # Gems used by the dummy application (needs to be here instead of the gemspec)
 gem "jquery-rails"
+gem 'backbone-rails'
 gem 'carrierwave'
 gem 'devise'
 gem 'gravtastic'
+gem 'less-rails-bootstrap'
 gem 'omniauth-google-apps'
 gem 'omniauth-google-oauth2'
 gem 'state_machine'

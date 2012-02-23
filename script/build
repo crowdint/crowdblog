@@ -22,8 +22,8 @@ RAILS_ENV=test rake db:migrate
 bundle exec rake
 EXIT_CODE=$?
 
-echo "-- METRICS"
-which metrical || gem install metrical
-metrical > /dev/null 2>&1
+#echo "-- METRICS"
+#which metrical || gem install metrical
+#metrical > /dev/null 2>&1
 
 exit $EXIT_CODE

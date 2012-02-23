@@ -15,7 +15,9 @@ gem 'less-rails-bootstrap'
 gem 'omniauth-google-apps'
 gem 'omniauth-google-oauth2'
 gem 'state_machine'
+gem 'slim_assets'
 gem 'slim-rails'
+gem 'eco'
 
 group :assets do
   gem 'coffee-rails'

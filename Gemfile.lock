@@ -272,6 +272,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  eco
   fuubar
   gravtastic
   jquery-rails
@@ -283,6 +284,7 @@ DEPENDENCIES
   simplecov
   simplecov-rcov-text
   slim-rails
+  slim_assets
   sqlite3
   state_machine
   uglifier

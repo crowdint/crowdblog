@@ -8,7 +8,7 @@
  *= require_self
  *= require_tree    ./crowdblog_core/models
  *= require_tree    ./crowdblog_core/views
- *= require_tree    ./crowdblog_core/templates
+ *= require    ./crowdblog_core/templates/posts/index
  *= require         ./crowdblog_core/posts_main
  *= require         ./crowdblog_core/xhr_fix
  */

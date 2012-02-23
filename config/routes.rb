@@ -1,6 +1,6 @@
-CrowdblogCore::Engine.routes.draw do
+Crowdblog::Engine.routes.draw do
 
-  devise_for :users, class_name: 'CrowdblogCore::User',
+  devise_for :users, class_name: 'Crowdblog::User',
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :authors, only: :index

@@ -1,17 +1,17 @@
 $:.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'crowdblog_core/version'
+require 'crowdblog/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'crowdblog-core'
-  s.version     = CrowdblogCore::VERSION
+  s.name        = 'crowdblog'
+  s.version     = Crowdblog::VERSION
   s.authors     = ['Crowd Interactive', 'David Padilla','Chalo Fernandez']
   s.email       = %w(opensource@crowdint.com david@crowdint.com chalofa@crowdint.com)
-  s.homepage    = 'http://github.com/crowdint/crowdblog-core'
-  s.summary     = 'CrowdBlog core functionality and backend'
-  s.description = 'This mountable engine will allow CrowdBlog manage Posts and Authentication'
+  s.homepage    = 'http://github.com/crowdint/crowdblog'
+  s.summary     = 'CrowdBlog base functionality and backend'
+  s.description = 'This mountable engine has the basic functionality to manage Posts'
 
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files         = `git ls-files`.split("\n")

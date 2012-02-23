@@ -64,6 +64,6 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 # include Engine routes in Cucumber world
 module EngineRoutesHelper
-  include CrowdblogCore::Engine.routes.url_helpers
+  include Crowdblog::Engine.routes.url_helpers
 end
 World(EngineRoutesHelper)

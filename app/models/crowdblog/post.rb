@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class Post < ActiveRecord::Base
     self.table_name = :posts
     versioned

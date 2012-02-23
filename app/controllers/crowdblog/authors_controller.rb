@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class AuthorsController < ApplicationController
 
     def index

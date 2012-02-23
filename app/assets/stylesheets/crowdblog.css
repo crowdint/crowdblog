@@ -2,6 +2,6 @@
  *
  *= require twitter/bootstrap
  *= require_self
- *= require_tree ./crowdblog_core
+ *= require_tree ./crowdblog
  *
  */

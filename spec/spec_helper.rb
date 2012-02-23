@@ -35,5 +35,5 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   # Include Engine routes (needed for Controller specs)
-  config.include CrowdblogCore::Engine.routes.url_helpers
+  config.include Crowdblog::Engine.routes.url_helpers
 end

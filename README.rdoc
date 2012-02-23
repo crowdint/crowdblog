@@ -1,3 +1,3 @@
-= CrowdblogCore
+= CrowdBlog
 
-This project rocks and uses MIT-LICENSE.
+This project rocks!

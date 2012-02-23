@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class AssetsController < ApplicationController
 
     def create

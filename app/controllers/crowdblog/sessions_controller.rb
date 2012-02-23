@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class SessionsController < ApplicationController
 
     def authenticate_user

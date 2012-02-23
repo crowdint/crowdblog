@@ -1,8 +1,7 @@
-module CrowdblogCore
+module Crowdblog
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     def google_apps
-      abort 'llegaaa?'
       auth_hash = request.env['omniauth.auth']
       email = auth_hash.info['email']
       Rails.logger.info auth_hash

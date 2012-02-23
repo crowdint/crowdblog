@@ -1,4 +1,4 @@
-module CrowdblogCore
+module Crowdblog
   module ApplicationHelper
   end
 end

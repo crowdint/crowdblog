@@ -1,4 +1,4 @@
-module CrowdblogCore
+module Crowdblog
   class ApplicationController < ActionController::Base
     before_filter :authenticate!
 

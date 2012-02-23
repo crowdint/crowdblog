@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class Asset < ActiveRecord::Base
     self.table_name = :assets
     belongs_to :post

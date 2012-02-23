@@ -1,8 +1,8 @@
 Given /^the following posts by "([^"]*)":$/ do |name, table|
-  author = CrowdblogCore::User.find_by_name name
+  author = Crowdblog::User.find_by_name name
   table.hashes.each_with_index do |hash, index|
     time_index = (index * 5)
-    p = CrowdblogCore::Post.create!(title: hash[:title], body: hash[:body])
+    p = Crowdblog::Post.create!(title: hash[:title], body: hash[:body])
     p.author = author
     p.regenerate_permalink
     p.save!

@@ -1,4 +1,4 @@
-module  CrowdblogCore
+module  Crowdblog
   class User < ActiveRecord::Base
     self.table_name = :users
     include Gravtastic

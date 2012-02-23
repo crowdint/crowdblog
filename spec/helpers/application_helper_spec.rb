@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe CrowdblogCore::ApplicationHelper do
+describe Crowdblog::ApplicationHelper do
 end

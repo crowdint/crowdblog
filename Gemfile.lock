@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    crowdblog-core (0.0.1)
+    crowdblog (0.0.1)
       backbone-rails
       carrierwave
       devise
@@ -268,7 +268,7 @@ DEPENDENCIES
   backbone-rails
   carrierwave
   coffee-rails
-  crowdblog-core!
+  crowdblog!
   cucumber-rails
   database_cleaner
   devise

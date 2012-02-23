@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount CrowdblogCore::Engine => '/admin'
+  mount Crowdblog::Engine => '/admin'
 
-  root to: 'crowdblog_core/posts#index'
+  root to: 'crowdblog/posts#index'
 end

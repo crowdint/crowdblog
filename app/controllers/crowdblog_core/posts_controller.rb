@@ -16,7 +16,7 @@ module  CrowdblogCore
       @post.author = current_user
       @post.regenerate_permalink
       @post.save
-      respond_with [:admin, @post]
+      respond_with @post
     end
 
     def destroy

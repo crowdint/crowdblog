@@ -1,0 +1,27 @@
+<td>
+  <a href="/preview/<%= @post.id %>" target="_blank">
+    <%= @post.title %>
+  </a>
+</td>
+
+<td>
+  <%= @post.author_email %>
+</td>
+
+<td class="span2">
+  <%= @post.published_at %>
+</td>
+
+<td class="span1">
+  <% if @publisher: %>
+    <a href="#" class="publish btn span1">Publish</a>
+  <% end %>
+</td>
+
+<td class="span1">
+  <a href="#edit/<%= @post.id %>" class="edit btn span1">Edit</a>
+</td>
+
+<td class="span1">
+  <a href="#" class="delete btn span1">Delete</a>
+</td>

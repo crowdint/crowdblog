@@ -13,7 +13,10 @@ Gem::Specification.new do |s|
   s.summary     = 'CrowdBlog core functionality and backend'
   s.description = 'This mountable engine will allow CrowdBlog manage Posts and Authentication'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.require_paths = %w(lib app)
 
   s.add_dependency 'rails', '~> 3.2'
 

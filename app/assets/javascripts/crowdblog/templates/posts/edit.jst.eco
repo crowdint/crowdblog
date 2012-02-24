@@ -1,4 +1,4 @@
-<h2><%= @isNew ? 'New' : 'Edit' %> Post</h2>
+<h2><%= if @isNew then 'New' else 'Edit' %> Post</h2>
 
 <form accept-charset="UTF-8" action="/" class="form-horizontal" method="post">
   <fieldset>

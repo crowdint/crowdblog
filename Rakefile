@@ -28,5 +28,8 @@ Bundler::GemHelper.install_tasks
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
-# RSpec as default
-task :default => :spec
+# Alias for Cucumber
+task :cucumber => 'app:cucumber'
+
+# RSpec and Cucumber by default
+task :default => [:spec, :cucumber]

@@ -64,6 +64,9 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-webkit (0.10.0)
+      capybara (>= 1.0.0, < 1.2)
+      json
     carrierwave (0.5.8)
       activesupport (~> 3.0)
     childprocess (0.3.1)
@@ -110,6 +113,7 @@ GEM
     gherkin (2.9.0)
       json (>= 1.4.6)
     gravtastic (3.2.6)
+    headless (0.2.2)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.2)
@@ -232,6 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-rails
+  capybara-webkit
   carrierwave
   coffee-rails
   crowdblog!
@@ -241,6 +246,7 @@ DEPENDENCIES
   eco
   fuubar
   gravtastic
+  headless
   jquery-rails
   less-rails-bootstrap
   rake

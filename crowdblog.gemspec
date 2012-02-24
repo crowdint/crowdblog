@@ -33,9 +33,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'slim-rails'
   s.add_dependency 'state_machine'
 
+  s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'fuubar'
+  s.add_development_dependency 'headless'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov-text'

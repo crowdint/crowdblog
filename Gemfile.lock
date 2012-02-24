@@ -243,6 +243,7 @@ DEPENDENCIES
   gravtastic
   jquery-rails
   less-rails-bootstrap
+  rake
   rspec-rails
   sass-rails
   simplecov

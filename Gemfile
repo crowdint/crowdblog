@@ -23,6 +23,10 @@ group :assets do
   gem 'uglifier'
 end
 
+group :test do
+  gem 'rake' # needed for Travis CI: http://bit.ly/xEgH8j
+end
+
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing

@@ -71,3 +71,15 @@ module EngineRoutesHelper
   include Crowdblog::Engine.routes.url_helpers
 end
 World(EngineRoutesHelper)
+
+# Wait for AJAX requests when using @javascript tags: http://bit.ly/zige8p
+AfterStep('@javascript') do
+  begin
+    start_time = Time.now
+    until page.evaluate_script('jQuery.isReady&&jQuery.active==0') or (start_time + 5.seconds) < Time.now
+      page.evaluate_script('jQuery.isReady&&jQuery.active==0').class.should_not eql(String)
+      sleep 1
+    end
+  rescue
+  end
+end

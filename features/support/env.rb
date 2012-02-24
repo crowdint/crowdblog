@@ -13,7 +13,7 @@ require 'cucumber/rails'
 
 # Headless tests: http://bit.ly/xve9YJ
 require 'capybara/webkit'
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = ENV['DEBUG'] ? :selenium : :webkit
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd

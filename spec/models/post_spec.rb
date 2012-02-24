@@ -33,7 +33,7 @@ describe Crowdblog::Post do
 
   describe "#formatted_published_date" do
     it "Formats the published_at date" do
-      subject.published_at = Time.at(1329619863)
+      subject.published_at = Time.zone.parse('2012/02/18')
       subject.formatted_published_date.should == 'Feb 18, 2012'
     end
   end

@@ -1,3 +1,0 @@
-= CrowdBlog
-
-This project rocks!

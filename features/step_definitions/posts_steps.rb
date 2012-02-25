@@ -10,8 +10,16 @@ Given /^(?:|I )am on the New Post page$/ do
   visit posts_path + '#new'
 end
 
-Given /^(?:|I )have a Test Post$/ do
-  @current_user.should_not be_nil
+Given /^(?:|the )Published Post exists$/ do
+  step 'Test User exists' unless @current_user
+  step 'Publisher User exists' unless @current_user
+
+  @published_post = Fabricate :post_published, author: @current_user, publisher: @publisher_user
+end
+
+Given /^(?:|the )Test Post exists$/ do
+  step 'Test User exists' unless @current_user
+
   @post = Fabricate :post_test, author: @current_user
 end
 
@@ -24,6 +32,12 @@ When /^(?:|I )delete the Test Post$/ do
 
   post.click_link 'Delete'
   step 'confirm the popup dialog'
+end
+
+When /^(?:|I )Draft a published Post$/ do
+  post = page.find('#posts table tr', text: 'This is a Published Post')
+
+  post.click_link 'Publish' # button should be 'Draft' ?
 end
 
 When /^(?:|I )edit the Test Post$/ do
@@ -40,6 +54,12 @@ end
 
 When /^(?:|I )navigate to New Post$/ do
   click_link 'New Post'
+end
+
+When /^(?:|I )Publish a drafted Post$/ do
+  post = page.find('#posts table tr', text: 'This is a Test Post')
+
+  post.click_link 'Publish'
 end
 
 When /^(?:|I )write a Post$/ do
@@ -80,6 +100,15 @@ Then /^(?:|I )should see the New Post page$/ do
   step 'should see the Post form'
 end
 
+Then /^(?:|I )should see the Post as Drafted$/ do
+  @post.reload.should be_drafted
+end
+
+Then /^(?:|I )should see the Post as Published$/ do
+  @post.reload.should be_published          # Post is published
+  @post.publisher.should == @current_user   # Post published by Publisher
+end
+
 Then /^(?:|I )should see the Post form$/ do
   form = page.find('.container form')
 
@@ -105,25 +134,3 @@ Then /^(?:|the )post "([^"]*)" should have "([^"]*)" as its permalink$/ do |post
   post =Crowdblog::Post.find_by_title(post_title)
   post.permalink.should == permalink
 end
-
-#Given /^I fill "([^"]*)" as the post title$/ do |text|
-#  fill_in 'Title', with: text
-#end
-#
-#Given /^I fill "([^"]*)" as the post body$/ do |text|
-#  f
-#end
-#
-#Then /^the post titled "([^"]*)" is marked as published$/ do |post_title|
-#  @current_post = Crowdblog::Post.find_by_title(post_title)
-#  @current_post.should be_published
-#end
-#
-#Then /^current user is set as its publisher$/ do
-#  @current_post.publisher.should == @current_user
-#end
-#
-#Then /^the post titled "([^"]*)" is marked as drafted$/ do |post_title|
-#  @current_post = Crowdblog::Post.find_by_title(post_title)
-#  @current_post.should be_drafted
-#end

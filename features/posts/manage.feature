@@ -5,7 +5,7 @@ Feature: Manage Posts
 
   Background:
     Given the Test User exists
-      And I have a Test Post
+      And the Test Post exists
       And I am signed in as Test User
 
   Scenario: New Post

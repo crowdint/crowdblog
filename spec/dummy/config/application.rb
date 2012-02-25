@@ -60,7 +60,12 @@ module Dummy
   end
 end
 
-require 'fabrication'
-Fabrication.configure do |config|
-  config.fabricator_dir = '../../spec/fabricators'
+# Require and configure Fabrication for test and dev environments (not production)
+unless Rails.env.production?
+  require 'fabrication'
+  require 'faker'
+
+  Fabrication.configure do |config|
+    config.fabricator_dir = '../../spec/fabricators'
+  end
 end

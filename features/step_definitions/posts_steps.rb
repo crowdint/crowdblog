@@ -1,18 +1,15 @@
 #*****************
 #   GIVEN steps
 #-----------------
-Given /^(?:|I )am on the Edit Post page$/ do
-  @post.should_not be_nil
-  visit posts_path + "#edit/#{@post.id}"
-end
+Given /^(a|\d+) Post.? from other User exists$/ do |number|
+  number = 1 if number.to_i < 1
 
-Given /^(?:|I )am on the New Post page$/ do
-  visit posts_path + '#new'
+  number.times { Fabricate :post, author: Fabricate(:user) }
 end
 
 Given /^(?:|the )Published Post exists$/ do
-  step 'Test User exists' unless @current_user
   step 'Publisher User exists' unless @current_user
+  step 'Test User exists' unless @current_user
 
   @published_post = Fabricate :post_published, author: @current_user, publisher: @publisher_user
 end
@@ -46,16 +43,6 @@ When /^(?:|I )edit the Test Post$/ do
   click_button 'Save'
 end
 
-When /^(?:|I )navigate to Edit Post$/ do
-  post = page.find('#posts table tr', text: 'This is a Test Post')
-
-  post.click_link 'Edit'
-end
-
-When /^(?:|I )navigate to New Post$/ do
-  click_link 'New Post'
-end
-
 When /^(?:|I )Publish a drafted Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
@@ -78,14 +65,29 @@ Then /^(?:|I )should not see the Test Post$/ do
   posts.should_not have_content 'This is a Test Post'
 end
 
+Then /^(?:|I )should only see my Posts$/ do
+  posts = page.find('#posts table')
+
+  posts.should have_content 'This is a Test Post'
+  posts.should_not have_content 'Random Post title'
+end
+
 Then /^(?:|I )should see my New Post$/ do
   posts = page.find('#posts table')
 
   posts.should have_content 'A Great Post Title'  # Post Title
   posts.should have_content 'test@crowdint.com'   # Post Author
 
-  step 'the post "A Great Post Title" should be authored by current user'
-  step 'the post "A Great Post Title" should have "a-great-post-title" as its permalink'
+  post = Crowdblog::Post.find_by_title('A Great Post Title')
+  post.reload.author.should == @current_user
+  post.permalink.should == 'a-great-post-title'
+end
+
+Then /^(?:|I )should see Posts for all Users$/ do
+  posts = page.find('#posts table')
+
+  posts.should have_content 'This is a Test Post'
+  posts.should have_content 'Random Post title'
 end
 
 Then /^(?:|I )should see the Edit Post page$/ do
@@ -123,14 +125,4 @@ Then /^(?:|I )should see the Test Post changed$/ do
   posts = page.find('#posts table')
 
   posts.should have_content 'I just edited this Post'
-end
-
-Then /^(?:|the )post "([^"]*)" should be authored by current user$/ do |post_title|
-  post = Crowdblog::Post.find_by_title(post_title)
-  post.author.should == @current_user
-end
-
-Then /^(?:|the )post "([^"]*)" should have "([^"]*)" as its permalink$/ do |post_title, permalink|
-  post =Crowdblog::Post.find_by_title(post_title)
-  post.permalink.should == permalink
 end

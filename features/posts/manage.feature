@@ -7,7 +7,6 @@ Feature: Manage Posts
     Given the Test User exists
       And I have a Test Post
       And I am signed in as Test User
-#      And I am on the posts page
 
   Scenario: New Post
     Given I am on the New Post page

@@ -1,5 +1,5 @@
 Fabricator :user, class_name: 'Crowdblog::User' do
-  email                 { sequence(:email) { |i| "user#{i}@crowdint.com" } }
+  email                 { sequence { |i| "user#{i}@crowdint.com" } }
   name                  { Faker::Name.name }
   is_publisher          false
 end

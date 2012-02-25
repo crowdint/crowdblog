@@ -1,5 +1,5 @@
 Fabricator :post, class_name: 'Crowdblog::Post' do
-  title                 { Faker::Lorem.sentence }
+  title                 { sequence { |i| "Random Post title #{i}" } }
   body                  { Faker::Lorem.words(rand(10) + 1) }
   state                 'drafted'
   author(fabricator: :user)

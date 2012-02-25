@@ -60,3 +60,7 @@ module Dummy
   end
 end
 
+require 'fabrication'
+Fabrication.configure do |config|
+  config.fabricator_dir = '../../spec/fabricators'
+end

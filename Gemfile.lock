@@ -113,6 +113,9 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 0.0.10)
+    fuubar-cucumber (0.0.15)
+      cucumber (>= 1.0.2)
+      ruby-progressbar (~> 0.0.10)
     gherkin (2.9.0)
       json (>= 1.4.6)
     gravtastic (3.2.6)
@@ -250,6 +253,7 @@ DEPENDENCIES
   fabrication
   faker
   fuubar
+  fuubar-cucumber
   gravtastic
   headless
   jquery-rails

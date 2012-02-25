@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fabrication'
   s.add_development_dependency 'faker'
   s.add_development_dependency 'fuubar'
+  s.add_development_dependency 'fuubar-cucumber'
   s.add_development_dependency 'headless'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'simplecov'

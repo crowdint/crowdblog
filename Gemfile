@@ -24,8 +24,8 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'fabrication'
-  gem 'faker'
+  #gem 'fabrication'
+  #gem 'faker'
   gem 'rake' # needed for Travis CI: http://bit.ly/xEgH8j
 end
 

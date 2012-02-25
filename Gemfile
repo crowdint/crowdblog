@@ -23,7 +23,9 @@ group :assets do
   gem 'uglifier'
 end
 
-group :test do
+group :development, :test do
+  gem 'fabrication'
+  gem 'faker'
   gem 'rake' # needed for Travis CI: http://bit.ly/xEgH8j
 end
 

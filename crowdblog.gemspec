@@ -36,6 +36,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'fabrication'
+  s.add_development_dependency 'faker'
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'headless'
   s.add_development_dependency 'rspec-rails'

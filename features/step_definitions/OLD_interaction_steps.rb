@@ -24,3 +24,18 @@ Then /^I should see:$/ do |table|
     page.should have_content expected
   end
 end
+
+#OLD Post steps
+Then /^the post titled "([^"]*)" is marked as published$/ do |post_title|
+  @current_post = Crowdblog::Post.find_by_title(post_title)
+  @current_post.should be_published
+end
+
+Then /^current user is set as its publisher$/ do
+  @current_post.publisher.should == @current_user
+end
+
+Then /^the post titled "([^"]*)" is marked as drafted$/ do |post_title|
+  @current_post = Crowdblog::Post.find_by_title(post_title)
+  @current_post.should be_drafted
+end

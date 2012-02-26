@@ -11,6 +11,9 @@ ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/dummy"
 
 require 'cucumber/rails'
 
+# Wait for AJAX calls in Scenarios with JS
+require 'cucumber/ajaxer'
+
 # Headless tests: http://bit.ly/xve9YJ
 require 'capybara/webkit'
 Capybara.javascript_driver = ENV['DEBUG'] ? :selenium : :webkit
@@ -71,6 +74,3 @@ module EngineRoutesHelper
   include Crowdblog::Engine.routes.url_helpers
 end
 World(EngineRoutesHelper)
-
-# Wait for AJAX calls in Scenarios with JS
-require 'cucumber-ajaxer'

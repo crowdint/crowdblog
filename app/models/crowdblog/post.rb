@@ -28,59 +28,66 @@ module  Crowdblog
         post.published_at ||= Time.now
       end
 
-      event :publish do
-        transition drafted: :published
-      end
-
       event :draft do
         transition published: :drafted
       end
+
+      event :publish do
+        transition drafted: :published
+      end
     end
 
-    def self.all_posts_json
-      order('published_at desc, created_at desc').to_json only: [:id, :title, :state, :published_at],
-          methods: [:author_email, :published?]
+    # CLASS METHODS
+    class << self
+      def all_posts_json
+        order_by_publish_date.to_json only: [:id, :title, :state, :published_at],
+                                      methods: [:author_email, :published?]
+      end
+
+      def last_published(number)
+        published_and_ordered.limit(number)
+      end
+
+      def order_by_publish_date
+        order('published_at DESC, created_at DESC, id DESC')
+      end
+
+      def published
+        where(state: 'published')
+      end
+
+      def published_and_ordered
+        published.order_by_publish_date.includes(:author)
+      end
+
+      def scoped_for(user)
+        user.is_publisher? ? Post : user.authored_posts
+      end
     end
 
-    def self.scoped_for(user)
-      user.is_publisher? ? Post : user.authored_posts
-    end
+    # Must be after Class methods (otherwise a missing method error will raise)
+    scope :for_index,     last_published(3)
+    scope :for_history,   last_published(13)
+    scope :all_for_feed,  last_published(15)
 
 
-    def self.all_for_feed
-      Post.published_and_ordered.limit(15)
-    end
-
-    def self.for_index
-      Post.published_and_ordered.limit(3)
-    end
-
-    def self.for_history
-      Post.published_and_ordered.limit(13)
-    end
-
-    def self.published_and_ordered
-      Post.where(state: 'published').order('published_at DESC').includes(:author)
-    end
-
-    def regenerate_permalink
-      self.permalink = title.parameterize
-    end
-
+    # INSTANCE METHODS
     def allowed_to_update_permalink?
       !self.published?
+    end
+
+    def day
+      "%02d" % published_at.day
     end
 
     def formatted_published_date
       published_at.strftime("%b %d, %Y")
     end
 
-    def month
-      "%02d" % published_at.month
-    end
-
-    def day
-      "%02d" % published_at.day
+    def html_body
+      @@renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+                                             :autolink => true, :space_after_headers => true)
+      @@renderer.render(self.body).html_safe
     end
 
     def legacy(string, email)
@@ -93,6 +100,21 @@ module  Crowdblog
       self.update_attribute(:permalink, results[2])
     end
 
+    def month
+      "%02d" % published_at.month
+    end
+
+    def publish_if_allowed(transition, user)
+      if user.is_publisher?
+        self.publisher = user
+        self.send(transition)
+      end
+    end
+
+    def regenerate_permalink
+      self.permalink = title.parameterize
+    end
+
     #
     # Use this methods to generate the post url
     # always use with the splat
@@ -103,19 +125,6 @@ module  Crowdblog
     #
     def url_params
       [self.year, self.month, self.day, self.permalink, 'html']
-    end
-
-    def html_body
-      @@renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-          :autolink => true, :space_after_headers => true)
-      @@renderer.render(self.body).html_safe
-    end
-
-    def publish_if_allowed(transition, user)
-      if user.is_publisher?
-        self.publisher = user
-        self.send(transition)
-      end
     end
   end
 end

@@ -71,3 +71,6 @@ module EngineRoutesHelper
   include Crowdblog::Engine.routes.url_helpers
 end
 World(EngineRoutesHelper)
+
+# Wait for AJAX calls in Scenarios with JS
+require 'cucumber-ajaxer'

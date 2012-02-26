@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eco'
   s.add_dependency 'gravtastic'
   s.add_dependency 'less-rails-bootstrap'
+  s.add_dependency 'redcarpet'
   s.add_dependency 'slim_assets'
   s.add_dependency 'slim-rails'
   s.add_dependency 'state_machine'

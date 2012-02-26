@@ -1,5 +1,5 @@
 module  Crowdblog
-  class PostsController < ApplicationController
+  class PostsController < Controller
     respond_to :html, :json
     cache_sweeper :post_sweeper
 

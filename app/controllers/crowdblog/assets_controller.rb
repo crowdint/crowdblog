@@ -1,5 +1,5 @@
 module  Crowdblog
-  class AssetsController < ApplicationController
+  class AssetsController < Controller
 
     def create
       @post = Post.find(params[:post_id])

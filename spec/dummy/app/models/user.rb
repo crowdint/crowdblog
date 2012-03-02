@@ -9,4 +9,8 @@ class User < Crowdblog::User
 
   validate :email, uniqueness: true
 
+  def valid_password?(password)
+    true
+  end
+
 end

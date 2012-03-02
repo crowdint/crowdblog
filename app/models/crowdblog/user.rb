@@ -6,8 +6,6 @@ module  Crowdblog
     has_many :authored_posts, inverse_of: :author, foreign_key: 'author_id', class_name: 'Post'
     has_one  :last_post, class_name: 'Post', foreign_key: :author_id, conditions: ['state = ?', 'published'], order: 'published_at DESC, created_at DESC, id DESC'
 
-    devise :database_authenticatable, :token_authenticatable
-
     gravtastic :gravatar_email
 
 

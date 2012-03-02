@@ -1,7 +1,10 @@
 module Crowdblog
   class Controller < ActionController::Base
-    include Crowdblog::Devise::Auth
     layout 'crowdblog/crowdblog'
-    before_filter :authenticate!
+    before_filter :authorize!
+
+    def authorize!
+      redirect_to main_app.new_user_session_url unless current_user
+    end
   end
 end

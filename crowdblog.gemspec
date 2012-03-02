@@ -7,8 +7,8 @@ require 'crowdblog/version'
 Gem::Specification.new do |s|
   s.name        = 'crowdblog'
   s.version     = Crowdblog::VERSION
-  s.authors     = ['Crowd Interactive', 'David Padilla','Chalo Fernandez']
-  s.email       = %w(opensource@crowdint.com david@crowdint.com chalofa@crowdint.com)
+  s.authors     = ['Crowd Interactive', 'David Padilla', 'Chalo Fernandez', 'Ignacio Galindo']
+  s.email       = %w(opensource@crowdint.com david@crowdint.com chalofa@crowdint.com ignacio@crowdint.com)
   s.homepage    = 'http://github.com/crowdint/crowdblog'
   s.summary     = 'CrowdBlog base functionality and backend'
   s.description = 'This mountable engine has the basic functionality to manage Posts'

@@ -7,8 +7,8 @@ require 'crowdblog/version'
 Gem::Specification.new do |s|
   s.name        = 'crowdblog'
   s.version     = Crowdblog::VERSION
-  s.authors     = ['Crowd Interactive', 'David Padilla', 'Chalo Fernandez', 'Ignacio Galindo']
-  s.email       = %w(opensource@crowdint.com david@crowdint.com chalofa@crowdint.com ignacio@crowdint.com)
+  s.authors     = ['Crowd Interactive', 'David Padilla', 'Chalo Fernandez', 'Ignacio Galindo', 'Nora Alvarado']
+  s.email       = %w(opensource@crowdint.com david@crowdint.com chalofa@crowdint.com ignacio@crowdint.com nora@crowdint.com)
   s.homepage    = 'http://github.com/crowdint/crowdblog'
   s.summary     = 'CrowdBlog base functionality and backend'
   s.description = 'This mountable engine has the basic functionality to manage Posts'
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'slim-rails'
   s.add_dependency 'state_machine'
 
-  s.add_development_dependency 'capybara-webkit'
+  #s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'cucumber-ajaxer'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'database_cleaner'

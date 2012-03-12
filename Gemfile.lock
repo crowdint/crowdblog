@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    crowdblog (0.0.4)
+    crowdblog (0.0.5)
       backbone-rails
       carrierwave
       devise
@@ -65,9 +65,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-webkit (0.10.0)
-      capybara (>= 1.0.0, < 1.2)
-      json
     carrierwave (0.5.8)
       activesupport (~> 3.0)
     childprocess (0.3.1)
@@ -246,7 +243,6 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-rails
-  capybara-webkit
   carrierwave
   coffee-rails
   crowdblog!

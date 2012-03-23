@@ -44,6 +44,10 @@ module  Crowdblog
                                       methods: [:author_email, :published?]
       end
 
+      def by_author(author_id)
+        published_and_ordered.where(author_id: author_id)
+      end
+
       def last_published(number)
         published_and_ordered.limit(number)
       end

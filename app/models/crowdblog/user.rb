@@ -21,6 +21,10 @@ module  Crowdblog
     def publisher!
       update_attribute(:is_publisher, true)
     end
+
+    def to_param
+      [email.split('@').first]
+    end
   end
 end
 

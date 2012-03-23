@@ -15,7 +15,7 @@ module  Crowdblog
 
     validates :title, length: { minimum: 5, maximum: 90 }
 
-    attr_accessible :title, :body, :updated_by
+    attr_accessible :title, :body, :updated_by, :ready_for_review
 
     LEGACY_TITLE_REGEXP = /(\d+-\d+-\d+)-(.*)/
 

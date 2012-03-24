@@ -1,4 +1,5 @@
 class User < Crowdblog::User
+  gravtastic :gravatar_email
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

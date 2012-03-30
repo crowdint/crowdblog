@@ -4,7 +4,7 @@ module Crowdblog
     before_filter :authorize!
 
     def authorize!
-      redirect_to main_app.new_user_session_url unless current_user
+      redirect_to main_app.user_sign_in_url
     end
   end
 end

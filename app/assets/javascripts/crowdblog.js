@@ -5,6 +5,7 @@
  *= require         'backbone'
  *= require         'swfobject'
  *= require         'jquery.uploadify'
+ *= require         'markdown'
  *= require_self
  *= require_tree    ./crowdblog/models
  *= require_tree    ./crowdblog/views

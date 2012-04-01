@@ -1,6 +1,7 @@
 $ ->
   PostsApp.EditPostView = Backbone.View.extend
     events:
+      'keyup #post_body' : 'updatePreview'
       'click .cancel' : 'cancelPost'
       'click .update' : 'updatePost'
 
@@ -10,6 +11,7 @@ $ ->
     render: ->
       this.model.fetch()
       this.$el.html(this.template({post: this.model.toJSON(), isNew: this.model.isNew()}))
+      @updatePreview()
       this
 
     cancelPost: (e) ->
@@ -29,6 +31,9 @@ $ ->
           $.each errors, (key, value) =>
             this.$('.control-group.' + key).addClass('error')
             this.$('.' + key + '.help-inline').html(value.join(','))
+
+    updatePreview: ->
+      @.$('#post_preview').html markdown.toHTML(@.$('#post_body').val())
 
     extractData: ->
       {

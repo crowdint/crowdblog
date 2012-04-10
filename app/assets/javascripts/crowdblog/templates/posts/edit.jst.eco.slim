@@ -2,20 +2,20 @@ h2 <%= (if @isNew then 'New' else 'Edit') %> Post
 
 = form_tag '/' do
   fieldset
-    .fields.span6
+    .fields.span5
       .control-group.title
         = label_tag 'post_title', 'Title', class: 'control-label'
         .controls
-          = text_field_tag 'post_title', "<%= @post.title %>".html_safe, class: 'input-xlarge span6'
+          = text_field_tag 'post_title', "<%= @post.title %>".html_safe, class: 'input-xlarge span5'
           span.help-inline.title
 
       .control-group.body
         = label_tag 'post_body', 'Body', class: 'control-label'
         .controls
-          = text_area_tag 'post_body', "<%= @post.body %>".html_safe, class: 'span6', rows: 30
+          = text_area_tag 'post_body', "<%= @post.body %>".html_safe, class: 'span5', rows: 30
           span.help-inline= link_to 'Markdown syntax', 'http://daringfireball.net/projects/markdown/syntax', target: '_BLANK'
 
-    #post_preview.span5
+    #post_preview.span6
 
     | <% unless @isNew: %>
     #attachments.row-fluid.clear

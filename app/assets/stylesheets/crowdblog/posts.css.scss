@@ -1,11 +1,4 @@
-// Place all the styles related to the admin/posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
 /* Edit post */
-
 #post_preview {
   position: relative;
   top: 110px;
@@ -13,4 +6,8 @@
   overflow-y: scroll;
   padding: 0 25px 0 10px;
   background: #EBEBEB;
+}
+
+form .clear {
+  clear: both;
 }

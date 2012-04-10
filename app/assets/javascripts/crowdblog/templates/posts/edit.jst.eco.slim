@@ -1,6 +1,6 @@
 h2 <%= (if @isNew then 'New' else 'Edit') %> Post
 
-= form_tag '/', class: 'horizontal-form' do
+= form_tag '/' do
   fieldset
     .fields.span6
       .control-group.title
@@ -17,10 +17,8 @@ h2 <%= (if @isNew then 'New' else 'Edit') %> Post
 
     #post_preview.span5
 
-
-
     | <% unless @isNew: %>
-    #attachments.row-fluid style='clear: both;'
+    #attachments.row-fluid.clear
       h2 Attachments
       .span8.attachment-list
         | <% for asset in @post.assets: %>
@@ -30,7 +28,7 @@ h2 <%= (if @isNew then 'New' else 'Edit') %> Post
         #uploader
 
     | <% end %>
-    .form-actions
+    .form-actions.clear
       .row
         .span1
           button.btn.btn-primary.update Save

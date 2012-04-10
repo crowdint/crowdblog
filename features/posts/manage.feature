@@ -29,3 +29,8 @@ Feature: Manage Posts
   Scenario: Navigate to Edit Post
     When I navigate to Edit Post
     Then I should see the Edit Post page
+
+  Scenario: Post Preview
+    Given I am on the New Post page
+    When I type in the post body field
+      Then I should see its markdown preview

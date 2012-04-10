@@ -55,10 +55,20 @@ When /^(?:|I )write a Post$/ do
   click_button 'Save'
 end
 
+When /^I type in the post body field$/ do
+  fill_in 'Body', with: "# This is a title\n## And a subtitle"
+end
 
 #*****************
 #   THEN steps
 #-----------------
+
+Then /^I should see its markdown preview$/ do
+  preview = find('#post_preview')
+  preview.find('h1').should have_content('This is a title')
+  preview.find('h2').should have_content('And a subtitle')
+end
+
 Then /^(?:|I )should not see the Test Post$/ do
   posts = page.find('#posts table')
 

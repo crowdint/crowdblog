@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    crowdblog (0.0.13)
+    crowdblog (0.0.14)
       backbone-rails
       carrierwave
       devise

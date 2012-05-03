@@ -21,7 +21,7 @@ $ ->
           edit_post_view = new PostsApp.EditPostView({model: post})
           $('#posts').html(edit_post_view.render().el)
           $('#uploader').uploadify
-            'uploader'  : '/uploadify.swf'
+            'uploader'  : '/assets/uploadify.swf'
             'cancelImg' : '/assets/cancel.png'
             'auto'      : true
             'script'    : '/admin/posts/' + post.id + '/assets'

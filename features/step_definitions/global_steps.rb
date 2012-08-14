@@ -6,9 +6,7 @@ Given /^(?:|I )am signed in as (Test|Publisher) User$/ do |user_type|
 end
 
 Given /^(?:|the )Test User exists$/ do
-  @current_user = Crowdblog::User.find_by_email('test@crowdint.com')
-
-  @current_user = Fabricate(:user_test) unless @current_user
+  @current_user = Crowdblog::TestRunner::Models.create_user
 end
 
 Given /^(?:|the )Publisher User exists$/ do

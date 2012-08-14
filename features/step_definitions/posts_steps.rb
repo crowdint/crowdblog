@@ -4,7 +4,7 @@
 Given /^(a|\d+) Post.? from other User exists$/ do |number|
   number = 1 if number.to_i < 1
 
-  number.times { Fabricate :post, author: Fabricate(:user) }
+  number.times { Crowdblog::TestRunner::Models.create_post }
 end
 
 Given /^(?:|the )Published Post exists$/ do
@@ -15,9 +15,10 @@ Given /^(?:|the )Published Post exists$/ do
 end
 
 Given /^(?:|the )Test Post exists$/ do
-  step 'Test User exists' unless @current_user
-
-  @post = Fabricate :post_test, author: @current_user
+  #step 'Test User exists' unless @current_user
+  #@post = Fabricate :post_test, author: @current_user
+  user = Crowdblog::TestRunner::Models.create_user
+  @post = Crowdblog::TestRunner::Models.create_post :post_test, author: user
 end
 
 

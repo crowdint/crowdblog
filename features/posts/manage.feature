@@ -33,4 +33,4 @@ Feature: Manage Posts
   Scenario: Post Preview
     Given I am on the New Post page
     When I type in the post body field
-      Then I should see its markdown preview
+    Then I should see its markdown preview

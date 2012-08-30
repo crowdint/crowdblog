@@ -41,7 +41,7 @@ module  Crowdblog
     class << self
       def all_posts_json
         includes(:author).
-            order_by_publish_date.to_json only: [:id, :title, :state, :published_at],
+            order_by_publish_date.to_json only: [:id, :title, :state, :published_at, :ready_for_review],
                                       methods: [:author_email, :published?]
       end
 

@@ -26,6 +26,7 @@ end
 
 group :development, :test do
   gem 'rake' # needed for Travis CI: http://bit.ly/xEgH8j
+  gem 'launchy'
 end
 
 # Declare any dependencies that are still in development here instead of in

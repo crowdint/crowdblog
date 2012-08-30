@@ -17,3 +17,7 @@ Given /^(?:|the )Publisher User exists$/ do
   @current_user = Fabricate(:user_publisher) unless @current_user
   @publisher_user = @current_user
 end
+
+Then /^show me the page$/ do
+  save_and_open_page
+end

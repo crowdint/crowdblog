@@ -53,6 +53,7 @@ GEM
     activesupport (3.2.2)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.3.2)
     arel (3.0.2)
     backbone-rails (0.9.1)
       rails (>= 3.0.0)
@@ -130,6 +131,8 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.6.6)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     less (2.0.12)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
@@ -261,6 +264,7 @@ DEPENDENCIES
   gravtastic
   headless
   jquery-rails
+  launchy
   less-rails-bootstrap
   rake
   redcarpet

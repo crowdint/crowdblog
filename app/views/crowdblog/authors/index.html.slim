@@ -14,5 +14,5 @@ table.table.table-striped
         th= image_tag author.gravatar_url
         td= author.name
         td= author.email
-        td= author.authored_posts.count
-        td= author.last_post_at
+        td= author.published_posts.size
+        td= author.last_published_at

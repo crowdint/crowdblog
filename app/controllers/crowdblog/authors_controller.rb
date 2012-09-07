@@ -2,7 +2,7 @@ module  Crowdblog
   class AuthorsController < Controller
 
     def index
-      @authors = User.includes(:authored_posts).sort {|a,b| b.authored_posts.count <=> a.authored_posts.count}
+      @authors = User.includes(:published_posts).sort {|a,b| b.published_posts.size <=> a.published_posts.size}
     end
 
   end

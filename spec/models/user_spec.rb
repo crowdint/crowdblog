@@ -46,6 +46,31 @@ module Crowdblog
       end
     end
 
+    describe "#last_published_at" do
+      context 'has published posts' do
+        let(:date) { Date.today }
+
+        before do
+          posts = [ mock_model(Post, :published_at => date), mock_model(Post, :published_at => 1.day.ago) ]
+          subject.stub(:published_posts).and_return posts
+        end
+
+        it "returns the published_at date of the first post" do
+          subject.last_published_at.should be(date)
+        end
+      end
+
+      context 'no published posts' do
+        before do
+          subject.stub(:published_posts).and_return []
+        end
+
+        it "returns nil" do
+          subject.last_published_at.should be_nil
+        end
+      end
+    end
+
     describe '#publisher!' do
       it 'should make User a Publisher' do
         subject.should_receive(:update_attribute).with(:is_publisher, true)

@@ -27,7 +27,7 @@ end
 When /^(?:|I )delete the Test Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_link 'Delete'
+  post.click_button 'Delete'
   step 'confirm the popup dialog'
 end
 
@@ -46,7 +46,7 @@ end
 When /^(?:|I )Publish a drafted Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_link 'Publish'
+  post.click_button 'Publish'
 end
 
 When /^(?:|I )write a Post$/ do

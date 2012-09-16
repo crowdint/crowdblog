@@ -3,9 +3,10 @@ $ ->
     tagName: 'tr'
 
     events:
-      'click .delete' : 'deletePost'
+      'click .delete'  : 'deletePost'
       'click .publish' : 'togglePublish'
-      'click .review' : 'toggleReview'
+      'click .review'  : 'toggleReview'
+      'click .edit'    : 'editPost'
 
     template:
       JST["crowdblog/templates/posts/post"]
@@ -55,3 +56,5 @@ $ ->
       this.$el.find('.review').removeClass('btn-warning')
       this.$el.find('.review').addClass('btn-warning') if this.model.get 'ready_for_review'
 
+    editPost: ->
+      PostsApp.router.navigate('edit/' + @model.id, { trigger: true })

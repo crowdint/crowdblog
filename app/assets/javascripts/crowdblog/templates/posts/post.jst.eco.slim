@@ -4,11 +4,11 @@ td <%= @post.author_email %>
 td.span2 <%= @post.published_at %>
 td.span1
   | <% if @publisher: %>
-  a.btn.publish.span1 href="#" Publish
+  button.btn.btn-small.publish href="#" Publish
   | <% end %>
 td.span1
-  a.btn.review.span1 href="#" Review
+  button.btn.btn-small.review href="#" Review
 td.span1
-  a.btn.delete.span1 href="#" Delete
+  button.btn.btn-small.delete href="#" Delete
 td.span1
-  a.btn.edit.span1 href="#edit/<%= @post.id %>" Edit
+  button.btn.btn-small.edit href="#edit/<%= @post.id %>" Edit

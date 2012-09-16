@@ -10,12 +10,12 @@ html
     = yield :scripts
 
   body
-    .navbar
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
           .row
             .span9
-              = image_tag 'crowdblog/logo.png'
+              = image_tag 'crowdblog/logo.png', :width => 227, :height => 74
             .span3
               ul.nav
                 li.brand= current_user.email

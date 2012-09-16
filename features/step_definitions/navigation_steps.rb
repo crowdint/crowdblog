@@ -29,7 +29,7 @@ end
 When /^(?:|I )navigate to Edit Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_link 'Edit'
+  post.click_button 'Edit'
 end
 
 When /^(?:|I )navigate to New Post$/ do

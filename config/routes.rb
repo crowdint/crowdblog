@@ -8,5 +8,5 @@ Crowdblog::Engine.routes.draw do
 
   root to: 'posts#index'
 
-  devise_for :users, :class_name => 'Crowdblog::User'
+  devise_for :users, :class_name => 'Crowdblog::User', :module => 'crowdblog/devise'
 end

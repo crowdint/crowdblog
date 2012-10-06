@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  mount Crowdblog::Engine => '/admin'
+  mount Crowdblog::Engine => '/blogadmin'
 
   root to: 'home#show'
-
 end

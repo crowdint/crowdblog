@@ -1,10 +1,9 @@
 module Crowdblog
   class Controller < ActionController::Base
-    layout 'crowdblog/crowdblog'
-    before_filter :authorize!
+    before_filter :authentication_filter
 
-    def authorize!
-      redirect_to main_app.crowdblog_sign_in_url unless current_user
+    def authentication_filter
+      authenticate_user!
     end
   end
 end

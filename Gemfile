@@ -7,16 +7,6 @@ gemspec
 
 # Gems used by the dummy application (needs to be here instead of the gemspec)
 gem "jquery-rails"
-gem 'backbone-rails'
-gem 'carrierwave'
-gem 'devise'
-gem 'gravtastic'
-gem 'less-rails-bootstrap'
-gem 'redcarpet'
-gem 'state_machine'
-gem 'slim_assets'
-gem 'slim-rails'
-gem 'eco'
 
 group :assets do
   gem 'coffee-rails'

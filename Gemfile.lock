@@ -247,34 +247,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  backbone-rails
   capybara-webkit
-  carrierwave
   coffee-rails
   crowdblog!
   cucumber-ajaxer
   cucumber-rails
   database_cleaner
-  devise
-  eco
   fabrication
   faker
   fuubar
   fuubar-cucumber
-  gravtastic
   headless
   jquery-rails
   launchy
-  less-rails-bootstrap
   rake
-  redcarpet
   rspec-rails
   sass-rails
   simplecov
   simplecov-rcov-text
-  slim-rails
-  slim_assets
   sqlite3
-  state_machine
   uglifier
   vestal_versions!

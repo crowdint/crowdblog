@@ -1,0 +1,12 @@
+.navbar
+  .navbar-inner
+    ul.nav.span7
+      li= image_tag 'crowdblog/logo.png', :width => 227, :height => 74
+    ul.nav
+      - if current_user
+        li.brand= current_user.email
+        li= link_to 'Posts', posts_path
+        li= link_to 'Authors', authors_path
+        li= link_to 'Sign out', crowdblog.destroy_user_session_path
+
+

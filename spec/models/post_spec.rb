@@ -47,7 +47,7 @@ module Crowdblog
 
         context 'user is publisher' do
           it 'should see all the Posts' do
-            Post.scoped_for(user).should == Post
+            Post.scoped_for(user).should == Post.scoped
           end
         end
 

@@ -77,6 +77,5 @@ module Crowdblog
         subject.publisher!
       end
     end
-
   end
 end

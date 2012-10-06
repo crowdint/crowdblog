@@ -66,7 +66,7 @@ module  Crowdblog
       end
 
       def scoped_for(user)
-        user.is_publisher? ? Post : user.authored_posts
+        user.is_publisher? ? scoped : user.authored_posts
       end
     end
 

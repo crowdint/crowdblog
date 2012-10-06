@@ -1,4 +1,4 @@
-@javascript
+@wip
 Feature: Posts Publication
   As a Publisher
   I want to be able to publish drafted Posts

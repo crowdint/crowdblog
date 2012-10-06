@@ -3,26 +3,32 @@ module  Crowdblog
     respond_to :html, :json
     cache_sweeper :post_sweeper
 
+    def new
+      @post = Post.new
+    end
+
     def index
-      @posts = Post.scoped_for(current_user).all_posts_json
-      respond_to do |format|
-        format.json { render json: @posts }
-        format.html
-      end
+      @posts = Post.scoped_for(current_user)
+      respond_with @posts
+      #respond_to do |format|
+        #format.json { render json: @posts }
+        #format.html
+      #end
     end
 
     def create
       @post = Post.new(params[:post])
       @post.author = current_user
       @post.regenerate_permalink
-      @post.save
-      respond_with @post
+      if @post.save
+        respond_with @post, :location => crowdblog.posts_path
+      end
     end
 
     def destroy
       @post = Post.scoped_for(current_user).find(params[:id])
       @post.destroy
-      respond_with @post
+      respond_with @post, :location => crowdblog.posts_path
     end
 
     def show
@@ -30,6 +36,10 @@ module  Crowdblog
       respond_to do |format|
         format.json { render json: @post.to_json(include: :assets) }
       end
+    end
+
+    def edit
+      @post = Post.scoped_for(current_user).find(params[:id])
     end
 
     def update
@@ -42,7 +52,7 @@ module  Crowdblog
 
       @post.publish_if_allowed(params[:transition], current_user) if params[:transition]
 
-      respond_with @post
+      respond_with @post, location: crowdblog.posts_path
     end
   end
 end

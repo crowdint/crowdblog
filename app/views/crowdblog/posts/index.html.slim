@@ -1,4 +1,6 @@
 h1 Posts
 
-#posts.container
+= link_to 'New Post', crowdblog.new_post_path, :class => "btn btn-primary btn-small"
 
+#posts.container
+  table.table.table-striped= render @posts

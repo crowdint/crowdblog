@@ -1,0 +1,13 @@
+tr
+  td= post.title
+  td= post.author_email
+  td.span2 = post.published_at
+  td.span1
+    - if current_user.is_publisher?
+      button.btn.btn-small.publish href="#" Publish
+  td.span1
+    button.btn.btn-small.review href="#" Review
+  td.span1
+    = link_to 'Delete', crowdblog.post_path(post), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-small"
+  td.span1
+    = link_to 'Edit', crowdblog.edit_post_path(post), :class => "btn btn-small"

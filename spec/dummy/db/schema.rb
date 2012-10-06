@@ -20,6 +20,26 @@ ActiveRecord::Schema.define(:version => 20120229160314) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "crowdblog_users", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_publisher"
+    t.string   "email",                :default => "", :null => false
+    t.string   "encrypted_password",   :default => "", :null => false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",        :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
+    t.string   "gravatar_alias"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "crowdblog_users", ["authentication_token"], :name => "index_crowdblog_users_on_authentication_token", :unique => true
+  add_index "crowdblog_users", ["email"], :name => "index_crowdblog_users_on_email", :unique => true
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -33,26 +53,6 @@ ActiveRecord::Schema.define(:version => 20120229160314) do
     t.boolean  "ready_for_review"
     t.datetime "marked_for_review_at"
   end
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.boolean  "is_publisher"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "email",                :default => "", :null => false
-    t.string   "encrypted_password",   :default => "", :null => false
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",        :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "authentication_token"
-    t.string   "gravatar_alias"
-  end
-
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   create_table "versions", :force => true do |t|
     t.integer  "versioned_id"

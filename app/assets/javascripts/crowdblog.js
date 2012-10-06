@@ -1,8 +1,6 @@
 /*
  *= require         'jquery'
  *= require         'jquery_ujs'
- *= require         'underscore'
- *= require         'backbone'
  *= require         'swfobject'
  *= require         'jquery.uploadify'
  *= require         'markdown'

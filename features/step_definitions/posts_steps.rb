@@ -27,8 +27,7 @@ end
 When /^(?:|I )delete the Test Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_button 'Delete'
-  step 'confirm the popup dialog'
+  post.click_link 'Delete'
 end
 
 When /^(?:|I )Draft a published Post$/ do
@@ -40,7 +39,7 @@ end
 When /^(?:|I )edit the Test Post$/ do
   fill_in 'Title', with: 'I just edited this Post'
   fill_in 'Body',  with: 'OMG, I changed the body of this post!'
-  click_button 'Save'
+  click_button 'Update'
 end
 
 When /^(?:|I )Publish a drafted Post$/ do
@@ -52,7 +51,7 @@ end
 When /^(?:|I )write a Post$/ do
   fill_in 'Title', with: 'A Great Post Title'
   fill_in 'Body',  with: 'I just wrote a loooooooong Post'
-  click_button 'Save'
+  click_button 'Create'
 end
 
 When /^I type in the post body field$/ do
@@ -127,7 +126,6 @@ Then /^(?:|I )should see the Post form$/ do
   form.should have_content 'Title'
   form.should have_content 'Body'
   form.should have_content 'Markdown syntax'
-  form.should have_content 'Save'
   form.should have_content 'Cancel'
 end
 

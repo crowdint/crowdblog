@@ -7,11 +7,11 @@ end
 
 Given /^(?:|I )am on the Edit Post page$/ do
   @post.should_not be_nil
-  visit posts_path + "#edit/#{@post.id}"
+  visit edit_post_path(@post)
 end
 
 Given /^(?:|I )am on the New Post page$/ do
-  visit posts_path + '#new'
+  visit new_post_path
 end
 
 
@@ -29,7 +29,7 @@ end
 When /^(?:|I )navigate to Edit Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_button 'Edit'
+  post.click_link 'Edit'
 end
 
 When /^(?:|I )navigate to New Post$/ do

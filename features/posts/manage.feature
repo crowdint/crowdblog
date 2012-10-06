@@ -1,4 +1,3 @@
-@javascript
 Feature: Manage Posts
   As a User
   I want to be able to manage Posts (CRUD)
@@ -30,6 +29,7 @@ Feature: Manage Posts
     When I navigate to Edit Post
     Then I should see the Edit Post page
 
+  @wip
   Scenario: Post Preview
     Given I am on the New Post page
     When I type in the post body field

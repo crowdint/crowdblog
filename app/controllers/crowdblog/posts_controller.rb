@@ -15,7 +15,7 @@ module Crowdblog
     end
 
     def index
-      @posts = Post.scoped_for(current_user).for_index
+      @posts = Post.scoped_for(current_user).for_admin_index
       respond_with @posts
     end
 
@@ -52,7 +52,6 @@ module Crowdblog
 
       @post.publish_if_allowed(post_params[:transition], current_user) if post_params[:transition]
 
-      Rails.logger.info "DONE WITH UPDATE"
       respond_with @post do |format|
         format.html { redirect_to crowdblog.posts_path }
       end

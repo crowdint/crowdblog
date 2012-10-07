@@ -1,4 +1,5 @@
-shared_examples_for "a crowdblog" do
+shared_examples_for "a crowdblog", :type => :integration do
+
   let(:user) do
     user = Crowdblog::User.new :email => 'test@example.com'
     user.password = '123456'
@@ -13,13 +14,11 @@ shared_examples_for "a crowdblog" do
 
   describe "manage posts" do
     before do
-      visit crowdblog.new_user_session_path
-      fill_in 'Email', :with => user.email
-      fill_in 'Password', :with => user.password
-      click_button 'Sign in'
+      Crowdblog::PostsController.any_instance.stub(:authenticate_user!)
+      Crowdblog::PostsController.any_instance.stub(:current_user).and_return user
     end
 
-    it "creates a post" do
+    it "creates a post", :js => true do
       visit crowdblog.posts_path
       click_link 'New Post'
 
@@ -47,6 +46,64 @@ shared_examples_for "a crowdblog" do
 
       page.current_path.should == crowdblog.posts_path
       page.should have_content 'A NEW post title'
+    end
+
+    it "deletes a post" do
+      post
+      post.author = user
+      post.save!
+
+      visit crowdblog.posts_path
+
+      within "#post_#{post.id}" do
+        click_link 'Delete'
+      end
+      page.current_path.should == crowdblog.posts_path
+      page.should_not have_content 'A post title'
+    end
+
+    it "publishes a post", :js => true do
+      user.publisher!
+
+      post
+      post.author = user
+      post.save!
+
+      visit crowdblog.posts_path
+
+      within "#post_#{post.id}" do
+        button = find_link 'Publish'
+        button.click
+
+        button[:class].should match /btn-success/
+        post.reload.state.should eq 'published'
+
+        button.click
+        button[:class].should match /btn-danger/
+        post.reload.state.should eq 'drafted'
+      end
+    end
+
+    it "marks the post for review", :js => true do
+      user.publisher!
+
+      post
+      post.author = user
+      post.save!
+
+      visit crowdblog.posts_path
+
+      within "#post_#{post.id}" do
+        button = find_link 'Review'
+        button.click
+
+        button[:class].should match /btn-warning/
+        post.reload.ready_for_review.should be_true
+
+        button.click
+        button[:class].should_not match /btn-warning/
+        post.reload.ready_for_review.should be_false
+      end
     end
   end
 end

@@ -1,11 +1,12 @@
 /* Edit post */
 #post-preview {
-  position: relative;
-  top: 110px;
   height: 420px;
   overflow-y: scroll;
-  padding: 0 25px 0 10px;
   background: #EBEBEB;
+
+  .inner {
+    padding: 5px;
+  }
 }
 
 form .clear {
@@ -14,4 +15,20 @@ form .clear {
 
 .new-link {
   padding: 5px 0 5px 0;
+}
+
+#uploader {
+  border: 3px #ebebeb dashed;
+
+  .inner {
+    padding: 20px;
+  }
+}
+
+#uploader:hover {
+  background-color: #ebebeb;
+}
+
+.form-box {
+  margin-top: 15px;
 }

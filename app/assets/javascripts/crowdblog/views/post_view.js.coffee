@@ -21,11 +21,11 @@ class Crowdblog.Views.PostView extends Backbone.View
     if @model.get('transition') == 'publish'
       @$el.find('a.publish').removeClass('btn-danger')
       @$el.find('a.publish').addClass('btn-success')
-      @$el.attr('data-published', true)
+      @$el.attr('data-state', 'published')
     else
       @$el.find('a.publish').removeClass('btn-success')
       @$el.find('a.publish').addClass('btn-danger')
-      @$el.attr('data-published', false)
+      @$el.attr('data-state', 'drafted')
 
     @$el.find('td.published-at').html(@model.get('published_at'))
 

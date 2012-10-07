@@ -22,13 +22,15 @@ Gem::Specification.new do |s|
 
   # Added in the Gemfile, so they can be accessed in the dummy app
   #   leave the dependencies here so our engine require those gems when added on base apps
-  s.add_dependency 'jquery-rails'
   s.add_dependency 'carrierwave'
   s.add_dependency 'devise'
   s.add_dependency 'gravtastic'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'jbuilder'
   s.add_dependency 'redcarpet'
   s.add_dependency 'slim'
   s.add_dependency 'state_machine'
+  s.add_dependency 'strong_parameters'
 
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'cucumber-rails'
@@ -43,6 +45,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'quiet_assets'
   #s.add_development_dependency 'vestal_versions' # using git version in Gemfile
 end

@@ -1,6 +1,5 @@
 module  Crowdblog
   class Post < ActiveRecord::Base
-    self.table_name = :posts
     versioned
 
     belongs_to :author, class_name: 'User'

@@ -11,13 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229160314) do
+ActiveRecord::Schema.define(:version => 20120220033923) do
 
-  create_table "assets", :force => true do |t|
+  create_table "crowdblog_assets", :force => true do |t|
     t.integer  "post_id"
     t.string   "attachment"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "crowdblog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "permalink"
+    t.datetime "published_at"
+    t.integer  "author_id"
+    t.string   "state"
+    t.integer  "publisher_id"
+    t.boolean  "ready_for_review"
+    t.datetime "marked_for_review_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "crowdblog_users", :force => true do |t|
@@ -39,20 +53,6 @@ ActiveRecord::Schema.define(:version => 20120229160314) do
 
   add_index "crowdblog_users", ["authentication_token"], :name => "index_crowdblog_users_on_authentication_token", :unique => true
   add_index "crowdblog_users", ["email"], :name => "index_crowdblog_users_on_email", :unique => true
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "permalink"
-    t.datetime "published_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "author_id"
-    t.string   "state"
-    t.integer  "publisher_id"
-    t.boolean  "ready_for_review"
-    t.datetime "marked_for_review_at"
-  end
 
   create_table "versions", :force => true do |t|
     t.integer  "versioned_id"

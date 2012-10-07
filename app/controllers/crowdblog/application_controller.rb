@@ -1,6 +1,6 @@
 module Crowdblog
   class ApplicationController < ActionController::Base
-    before_filter :authentication_filter
+    before_filter :authenticate_user!
 
     def authentication_filter
       authenticate_user!

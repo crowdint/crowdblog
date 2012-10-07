@@ -1,9 +1,8 @@
 .navbar
   .navbar-inner
-    ul.nav.span7
-      li= image_tag 'crowdblog/logo.png', :width => 227, :height => 74
-    ul.nav
-      - if current_user
+    = link_to image_tag('crowdblog/logo.png', :width => 227, :height => 74), root_path, :class => 'brand'
+    - if current_user
+      ul.nav
         li.brand= current_user.email
         li= link_to 'Posts', posts_path
         li= link_to 'Authors', authors_path

@@ -71,6 +71,10 @@ module  Crowdblog
         user.is_publisher? ? scoped : user.authored_posts
       end
 
+      def for_index
+        includes(:author).ordered_by_state.order_by_publish_date
+      end
+
       def ordered_by_state
         order(:state)
       end

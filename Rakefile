@@ -26,10 +26,4 @@ load 'rails/tasks/engine.rake'
 Bundler::GemHelper.install_tasks
 
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
-
-# Alias for Cucumber
-task :cucumber => 'app:cucumber'
-
-# RSpec and Cucumber by default
-task :default => [:spec, :cucumber]
+RSpec::Core::RakeTask.new(:default)

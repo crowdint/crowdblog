@@ -1,5 +1,7 @@
-module  Crowdblog
-  class PostsController < ApplicationController
+module Crowdblog
+  class PostsController < Crowdblog::ApplicationController
+    before_filter :authenticate_user!
+
     respond_to :html, :json
     cache_sweeper :post_sweeper
 

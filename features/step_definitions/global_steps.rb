@@ -1,20 +1,41 @@
 Given /^(?:|I )am signed in as (Test|Publisher) User$/ do |user_type|
   step "#{user_type} User exists"
 
-  @current_user.authentication_token.should be_present
-  visit crowdblog_path + "?auth_token=#{@current_user.authentication_token}"
+  visit new_user_session_path
+
+  if user_type == 'Test'
+    fill_in 'Email', :with => 'test@crowdint.com'
+  else
+    fill_in 'Email', :with => 'publisher@crowdint.com'
+  end
+  fill_in 'Password', :with => '123456'
+  click_button 'Sign in'
 end
 
 Given /^(?:|the )Test User exists$/ do
   @current_user = Crowdblog::User.find_by_email('test@crowdint.com')
 
-  @current_user = Fabricate(:user_test) unless @current_user
+  unless @current_user
+    @current_user = Crowdblog::User.new
+    @current_user.email = 'test@crowdint.com'
+    @current_user.password = '123456'
+    @current_user.password_confirmation = '123456'
+    @current_user.save!
+  end
 end
 
 Given /^(?:|the )Publisher User exists$/ do
   @current_user = Crowdblog::User.find_by_email('publisher@crowdint.com')
 
-  @current_user = Fabricate(:user_publisher) unless @current_user
+  unless @current_user
+    @current_user = Crowdblog::User.new
+    @current_user.email = 'publisher@crowdint.com'
+    @current_user.password = '123456'
+    @current_user.password_confirmation = '123456'
+    @current_user.is_publisher = true
+    @current_user.save!
+  end
+
   @publisher_user = @current_user
 end
 

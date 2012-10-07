@@ -1,12 +1,12 @@
 When /^I (un)?mark the Test post for review$/ do |negation|
-  within "#post-#{@post.id}" do
-    click_button "Review"
+  within "#post_#{@post.id}" do
+    click_link "Review"
   end
 end
 
 Then /^the Test post should be marked for review$/ do
-  within "#post-#{@post.id}" do
-    link = find_button('Review')
+  within "#post_#{@post.id}" do
+    link = find_link('Review')
     link[:class].should =~ /btn-warning/
   end
   @post.reload
@@ -14,8 +14,8 @@ Then /^the Test post should be marked for review$/ do
 end
 
 Then /^the Test post should not be marked for review$/ do
-  within "#post-#{@post.id}" do
-    link = find_button('Review')
+  within "#post_#{@post.id}" do
+    link = find_link('Review')
     link[:class].should_not =~ /btn-warning/
   end
   @post.reload

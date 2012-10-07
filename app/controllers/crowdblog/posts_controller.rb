@@ -45,9 +45,9 @@ module  Crowdblog
         @post.save!
       end
 
-      Rails.logger.info "HERE WE GO"
       @post.publish_if_allowed(post_params[:transition], current_user) if post_params[:transition]
 
+      Rails.logger.info "DONE WITH UPDATE"
       respond_with @post do |format|
         format.html { redirect_to crowdblog.posts_path }
       end

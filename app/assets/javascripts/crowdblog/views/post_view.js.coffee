@@ -1,10 +1,14 @@
 class Crowdblog.Views.PostView extends Backbone.View
   events:
     'click a.publish' : 'publishPost'
+    'click a.review' : 'markForReview'
 
   initialize: ->
     @model = new Crowdblog.Models.Post
+      ready_for_review: (@$el.attr('data-ready-for-review') == 'true')
+
     @model.id = @postId()
+    @model.bind('change:ready_for_review', @paintReviewButton)
 
   publishPost: (e) ->
     e.preventDefault()
@@ -12,7 +16,6 @@ class Crowdblog.Views.PostView extends Backbone.View
       @model.save 'transition', 'draft', { success: @paintPostRow }
     else
       @model.save 'transition', 'publish', { success: @paintPostRow }
-
 
   postId: ->
     @$el.attr('data-post-id')
@@ -31,3 +34,19 @@ class Crowdblog.Views.PostView extends Backbone.View
 
   postIsPublished: ->
     @$el.attr('data-state') == 'published'
+
+  markForReview: (e) ->
+    e.preventDefault()
+    ready_for_review = @model.get('ready_for_review')
+    if ready_for_review
+      ready_for_review = false
+    else
+      ready_for_review = true
+
+    @model.save 'ready_for_review', ready_for_review
+
+  paintReviewButton: (post) =>
+    if post.get('ready_for_review')
+      @$el.find('a.review').addClass('btn-warning')
+    else
+      @$el.find('a.review').removeClass('btn-warning')

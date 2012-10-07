@@ -17,5 +17,5 @@ Fabricator :post_published, from: :post do
   state                 'published'
   published_at          { 1.minute.ago }
   publisher(fabricator: :user_publisher)
-  permalink             { |post| post.title.parameterize }
+  permalink             { |post| post[:title].parameterize }
 end

@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'cucumber-ajaxer'
   s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'fabrication'
+  s.add_development_dependency 'fabrication', '~> 2.3.0'
   s.add_development_dependency 'faker'
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'fuubar-cucumber'
@@ -43,5 +43,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'quiet_assets'
   #s.add_development_dependency 'vestal_versions' # using git version in Gemfile
 end

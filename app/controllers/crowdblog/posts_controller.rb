@@ -15,7 +15,7 @@ module Crowdblog
     end
 
     def index
-      @posts = Post.scoped_for(current_user)
+      @posts = Post.scoped_for(current_user).ordered_by_state.order_by_publish_date
       respond_with @posts
     end
 

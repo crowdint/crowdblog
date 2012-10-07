@@ -70,6 +70,10 @@ module  Crowdblog
       def scoped_for(user)
         user.is_publisher? ? scoped : user.authored_posts
       end
+
+      def ordered_by_state
+        order(:state)
+      end
     end
 
     # Must be after Class methods (otherwise a missing method error will raise)

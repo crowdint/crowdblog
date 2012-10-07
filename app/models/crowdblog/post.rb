@@ -12,8 +12,6 @@ module  Crowdblog
 
     delegate :year, to: :published_at
 
-    validates :title, length: { minimum: 5, maximum: 90 }
-
     attr_accessor :transition
     attr_accessible :title, :body, :updated_by, :ready_for_review, :transition
 

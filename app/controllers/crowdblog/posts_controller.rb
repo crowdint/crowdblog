@@ -9,6 +9,9 @@ module Crowdblog
 
     def new
       @post = Post.new
+      @post.author = current_user
+      @post.save!
+      redirect_to edit_post_path(@post)
     end
 
     def index

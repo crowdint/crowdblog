@@ -8,11 +8,6 @@ Feature: Manage Posts
       And I am signed in as Test User
       And I go to the posts page
 
-  Scenario: New Post
-    Given I am on the New Post page
-    When I write a Post
-    Then I should see my New Post
-
   Scenario: Edit Post
     Given I am on the Edit Post page
     When I edit the Test Post
@@ -24,7 +19,7 @@ Feature: Manage Posts
 
   Scenario: Navigate to New Post
     When I navigate to New Post
-    Then I should see the New Post page
+    Then I should see the Edit Post page
 
   Scenario: Navigate to Edit Post
     When I navigate to Edit Post

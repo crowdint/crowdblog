@@ -87,7 +87,7 @@ module Crowdblog
     describe "#day" do
       context "published at in february" do
         before do
-          subject.published_at = stub(:day => 2)
+          subject.published_at = Date.new(2012, 12, 2)
         end
 
         it "returns 02" do
@@ -130,7 +130,7 @@ module Crowdblog
     describe "#month" do
       context "published at in february" do
         before do
-          subject.published_at = stub(:month => 2)
+          subject.published_at = Date.new(2012, 2, 1)
         end
 
         it "returns 02" do

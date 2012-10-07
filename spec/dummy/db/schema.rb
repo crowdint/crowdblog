@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120229160314) do
     t.string   "title"
     t.text     "body"
     t.string   "permalink"
-    t.date     "published_at"
+    t.datetime "published_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.integer  "author_id"

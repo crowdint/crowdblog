@@ -1,23 +1,11 @@
 h2 New Post
 
 = form_for @post do |f|
-  fieldset
-    .fields.span5
-      .control-group.title
-        = f.label :title, :class => 'control-label'
-        .controls
-          = f.text_field :title, :class => "input-xlarge span5"
-          span.help-inline.title
+  = render 'form', :f => f
 
-      .control-group.body
-        = label_tag 'post_body', 'Body', class: 'control-label'
-        .controls
-          = f.text_area :body, :class => "span5", :rows => 20
-          span.help-inline= link_to 'Markdown syntax', 'http://daringfireball.net/projects/markdown/syntax', target: '_BLANK'
-
-    .form-actions.clear
-      .row
-        .span1
-          = f.submit "Create", :class => "btn btn-primary"
-        .span1
-          = link_to 'Cancel', crowdblog.posts_path, :class => "btn"
+  .form-actions.clear
+    .row
+      .span1
+        = f.submit "Create", :class => "btn btn-primary"
+      .span1
+        = link_to 'Cancel', crowdblog.posts_path, :class => "btn"

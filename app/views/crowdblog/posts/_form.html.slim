@@ -1,0 +1,21 @@
+fieldset
+  .fields.span5
+    .control-group.title
+      = f.label :title, :class => 'control-label'
+      .controls
+        = f.text_field :title, :class => "input-xlarge span5"
+        span.help-inline.title
+
+    .control-group.body
+      = label_tag 'post_body', 'Body', class: 'control-label'
+      .controls
+        = f.text_area :body, :class => "span5", :rows => 20
+        span.help-inline= link_to 'Markdown syntax', 'http://daringfireball.net/projects/markdown/syntax', target: '_BLANK'
+
+  #post-preview.span5
+
+- content_for :scripts do
+  coffee:
+    $ ->
+      new Crowdblog.Views.PostFormView
+

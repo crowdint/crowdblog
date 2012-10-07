@@ -63,7 +63,7 @@ end
 #-----------------
 
 Then /^I should see its markdown preview$/ do
-  preview = find('#post_preview')
+  preview = find('#post-preview')
   preview.find('h1').should have_content('This is a title')
   preview.find('h2').should have_content('And a subtitle')
 end

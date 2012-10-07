@@ -33,7 +33,7 @@ end
 When /^(?:|I )Draft a published Post$/ do
   post = page.find('#posts table tr', text: 'This is a Published Post')
 
-  post.click_link 'Publish' # button should be 'Draft' ?
+  post.click_link 'Publish'
 end
 
 When /^(?:|I )edit the Test Post$/ do
@@ -45,7 +45,7 @@ end
 When /^(?:|I )Publish a drafted Post$/ do
   post = page.find('#posts table tr', text: 'This is a Test Post')
 
-  post.click_button 'Publish'
+  post.click_link 'Publish'
 end
 
 When /^(?:|I )write a Post$/ do
@@ -112,10 +112,18 @@ Then /^(?:|I )should see the New Post page$/ do
 end
 
 Then /^(?:|I )should see the Post as Drafted$/ do
+  within "tr#post_#{@post.id}" do
+    el = find_link 'Publish'
+    el[:class].should match /btn-danger/
+  end
   @post.reload.should be_drafted
 end
 
 Then /^(?:|I )should see the Post as Published$/ do
+  within "tr#post_#{@post.id}" do
+    el = find_link 'Publish'
+    el[:class].should match /btn-success/
+  end
   @post.reload.should be_published          # Post is published
   @post.publisher.should == @current_user   # Post published by Publisher
 end

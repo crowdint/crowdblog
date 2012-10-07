@@ -50,9 +50,12 @@ module  Crowdblog
         @post.save!
       end
 
-      @post.publish_if_allowed(params[:transition], current_user) if params[:transition]
+      @post.publish_if_allowed(params[:post][:transition], current_user) if params[:post][:transition]
 
-      respond_with @post, location: crowdblog.posts_path
+      respond_with @post do |format|
+        format.html { redirect_to crowdblog.posts_path }
+        format.json { render :json => @post }
+      end
     end
   end
 end

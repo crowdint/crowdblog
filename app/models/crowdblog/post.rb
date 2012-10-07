@@ -15,7 +15,8 @@ module  Crowdblog
 
     validates :title, length: { minimum: 5, maximum: 90 }
 
-    attr_accessible :title, :body, :updated_by, :ready_for_review
+    attr_accessor :transition
+    attr_accessible :title, :body, :updated_by, :ready_for_review, :transition
 
     LEGACY_TITLE_REGEXP = /(\d+-\d+-\d+)-(.*)/
 
@@ -26,6 +27,10 @@ module  Crowdblog
       before_transition on: :publish do |post, transition|
         #post.update_attribute(:published_at, Time.now)
         post.published_at ||= Time.now
+      end
+
+      before_transition on: :draft do |post, transition|
+        post.published_at = nil
       end
 
       event :draft do

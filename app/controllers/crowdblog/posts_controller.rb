@@ -15,7 +15,9 @@ module Crowdblog
     end
 
     def index
+      @state = params[:state]
       @posts = Post.scoped_for(current_user).for_admin_index
+      @posts = @posts.with_state(@state) if @state
       respond_with @posts
     end
 

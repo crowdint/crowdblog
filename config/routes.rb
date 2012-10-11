@@ -1,17 +1,21 @@
 Crowdblog::Engine.routes.draw do
+  namespace :admin do
+    resources :authors, only: :index
 
-  resources :authors, only: :index
-
-  match 'posts/:state', :to => 'posts#index',
+    match 'posts/:state', :to => 'posts#index',
       :constraints => { :state => /(published|drafted)/ },
       :as => 'posts_by_state',
       :via => :get
 
-  resources :posts do
-    resources :assets
+    resources :posts do
+      resources :assets
+    end
+
+    root to: 'posts#index'
+
+
   end
 
-  root to: 'posts#index'
-
-  devise_for :users, :class_name => 'Crowdblog::User', :module => 'crowdblog/devise'
+  devise_for :users, :class_name => 'Crowdblog::User',
+      :module => 'crowdblog/devise'
 end

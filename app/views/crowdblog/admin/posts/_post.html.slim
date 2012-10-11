@@ -8,6 +8,6 @@
   td.span1
     = link_to 'Review', '#', :class => "btn btn-small review #{(post.ready_for_review ? 'btn-warning' : '')}"
   td.span1
-    = link_to 'Delete', crowdblog.post_path(post), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-small"
+    = link_to 'Delete', crowdblog.admin_post_path(post), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-small"
   td.span1
-    = link_to 'Edit', crowdblog.edit_post_path(post), :class => "btn btn-small"
+    = link_to 'Edit', crowdblog.edit_admin_post_path(post), :class => "btn btn-small"

@@ -3,18 +3,18 @@
 
   .row
     .span3.new-link
-      = link_to 'New Post', crowdblog.new_post_path, :class => "btn btn-primary btn-small"
+      = link_to 'New Post', crowdblog.new_admin_post_path, :class => "btn btn-primary btn-small"
     .span3.offset6
       ul.nav.nav-pills
         li class="#{@state ? '' : 'active'}"
-          = link_to 'All', posts_path
+          = link_to 'All', crowdblog.admin_posts_path
         li class="#{@state == 'published' ? 'active' : ''}"
-          = link_to 'Published', posts_by_state_path('published')
+          = link_to 'Published', crowdblog.admin_posts_by_state_path('published')
         li class="#{@state == 'drafted' ? 'active' : ''}"
-          = link_to 'Drafted', posts_by_state_path('drafted')
+          = link_to 'Drafted', crowdblog.admin_posts_by_state_path('drafted')
 
   #posts.container
-    table.table.table-striped= render @posts
+    table.table.table-striped= render :partial => 'post', :collection => @posts
 
   - content_for :scripts do
     coffee:

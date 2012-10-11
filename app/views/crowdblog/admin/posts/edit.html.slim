@@ -1,7 +1,7 @@
 .span12
   h2 Edit Post
 
-  = form_for @post do |f|
+  = form_for [:admin, @post] do |f|
     = render 'form', :f => f
 
     .form-actions.clear
@@ -9,6 +9,6 @@
         .span1
           = f.submit "Update", :class => "btn btn-primary"
         .span1
-          = link_to 'Cancel', crowdblog.posts_path, :class => "btn"
+          = link_to 'Cancel', crowdblog.admin_posts_path, :class => "btn"
 
 

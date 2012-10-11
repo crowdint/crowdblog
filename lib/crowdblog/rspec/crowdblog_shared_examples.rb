@@ -14,19 +14,19 @@ shared_examples_for "a crowdblog", :type => :integration do
 
   describe "manage posts" do
     before do
-      Crowdblog::PostsController.any_instance.stub(:authenticate_user!)
-      Crowdblog::PostsController.any_instance.stub(:current_user).and_return user
+      Crowdblog::Admin::PostsController.any_instance.stub(:authenticate_user!)
+      Crowdblog::Admin::PostsController.any_instance.stub(:current_user).and_return user
     end
 
     it "creates a post", :js => true do
-      visit crowdblog.posts_path
+      visit crowdblog.admin_posts_path
       click_link 'New Post'
 
       fill_in 'Title', :with => 'A post title'
       fill_in 'Body' , :with => 'A post body'
       click_button 'Update'
 
-      page.current_path.should == crowdblog.posts_path
+      page.current_path.should == crowdblog.admin_posts_path
       page.should have_content 'A post title'
     end
 
@@ -38,7 +38,7 @@ shared_examples_for "a crowdblog", :type => :integration do
       end
 
       it "edits a post" do
-        visit crowdblog.posts_path
+        visit crowdblog.admin_posts_path
         within "#post_#{post.id}" do
           click_link 'Edit'
         end
@@ -47,24 +47,24 @@ shared_examples_for "a crowdblog", :type => :integration do
         fill_in 'Body' , :with => 'A NEW post body'
         click_button 'Update'
 
-        page.current_path.should == crowdblog.posts_path
+        page.current_path.should == crowdblog.admin_posts_path
         page.should have_content 'A NEW post title'
       end
 
       it "deletes a post" do
-        visit crowdblog.posts_path
+        visit crowdblog.admin_posts_path
 
         within "#post_#{post.id}" do
           click_link 'Delete'
         end
-        page.current_path.should == crowdblog.posts_path
+        page.current_path.should == crowdblog.admin_posts_path
         page.should_not have_content 'A post title'
       end
 
       it "publishes a post", :js => true do
         user.publisher!
 
-        visit crowdblog.posts_path
+        visit crowdblog.admin_posts_path
 
         within "#post_#{post.id}" do
           button = find_link 'Publish'
@@ -79,7 +79,7 @@ shared_examples_for "a crowdblog", :type => :integration do
         user.publisher!
         post.publish!
 
-        visit crowdblog.posts_path
+        visit crowdblog.admin_posts_path
 
         within "#post_#{post.id}" do
           button = find_link 'Publish'
@@ -93,7 +93,7 @@ shared_examples_for "a crowdblog", :type => :integration do
       it "marks the post for review", :js => true do
         user.publisher!
 
-        visit crowdblog.posts_path
+        visit crowdblog.admin_posts_path
 
         within "#post_#{post.id}" do
           button = find_link 'Review'

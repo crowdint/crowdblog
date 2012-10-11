@@ -21,9 +21,11 @@ shared_examples_for "a crowdblog", :type => :integration do
 
       visit crowdblog.root_path
 
-      page.should have_content post.title
-      page.should have_content post.body
-      page.should have_content user.name
+      within "#post_#{post.id}" do
+        page.should have_content post.title
+        page.should have_content post.body
+        page.should have_content user.email
+      end
     end
   end
 

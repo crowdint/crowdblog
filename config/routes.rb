@@ -1,4 +1,6 @@
 Crowdblog::Engine.routes.draw do
+  root :to => 'posts#index'
+
   namespace :admin do
     resources :authors, only: :index
 
@@ -11,9 +13,7 @@ Crowdblog::Engine.routes.draw do
       resources :assets
     end
 
-    root to: 'posts#index'
-
-
+    root :to => 'posts#index'
   end
 
   devise_for :users, :class_name => 'Crowdblog::User',

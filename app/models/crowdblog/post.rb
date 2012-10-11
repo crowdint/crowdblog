@@ -1,7 +1,5 @@
 module  Crowdblog
   class Post < ActiveRecord::Base
-    versioned
-
     belongs_to :author, class_name: 'User'
     belongs_to :publisher, class_name: 'User'
     has_many :assets

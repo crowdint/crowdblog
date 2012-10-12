@@ -32,6 +32,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'state_machine'
   s.add_dependency 'strong_parameters'
 
+  s.add_development_dependency 'autotest'
+  s.add_development_dependency 'autotest-growl'
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'fuubar'

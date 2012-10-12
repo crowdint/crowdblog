@@ -1,9 +1,7 @@
 $:.push File.expand_path('../lib', __FILE__)
 
-# Maintain your gem's version:
 require 'crowdblog/version'
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = 'crowdblog'
   s.version     = Crowdblog::VERSION
@@ -20,8 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 3.2'
 
-  # Added in the Gemfile, so they can be accessed in the dummy app
-  #   leave the dependencies here so our engine require those gems when added on base apps
   s.add_dependency 'carrierwave'
   s.add_dependency 'gravtastic'
   s.add_dependency 'jquery-rails'

@@ -37,7 +37,6 @@ module Crowdblog
         it 'should find published posts and order them by published date (FILO)' do
           Post.should_receive(:published).and_return Post
           Post.should_receive(:order_by_publish_date).and_return Post
-          Post.should_receive(:includes).with(:author)
           Post.published_and_ordered
         end
       end

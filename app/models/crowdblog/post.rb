@@ -1,11 +1,11 @@
 module  Crowdblog
   class Post < ActiveRecord::Base
-    belongs_to :author, class_name: 'Crowdblog::User'
-    belongs_to :publisher, class_name: 'Crowdblog::User'
+    belongs_to :author, class_name: 'User'
+    belongs_to :publisher, class_name: 'User'
     has_many :assets
 
-    delegate :name, to: :author, prefix: true
-    delegate :email, to: :author, prefix: true
+    delegate :name, to: :author, prefix: true, allow_nil: true
+    delegate :email, to: :author, prefix: true, allow_nil: true
     delegate :gravatar_url, to: :author
 
     delegate :year, to: :published_at

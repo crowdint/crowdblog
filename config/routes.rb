@@ -15,7 +15,4 @@ Crowdblog::Engine.routes.draw do
 
     root :to => 'posts#index'
   end
-
-  devise_for :users, :class_name => 'Crowdblog::User',
-      :module => 'crowdblog/devise'
 end

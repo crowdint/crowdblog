@@ -1,8 +1,6 @@
 module Crowdblog
   module Admin
     class PostsController < Crowdblog::Admin::BaseController
-      before_filter :authenticate_user!
-
       respond_to :html, :json
       cache_sweeper :post_sweeper
 

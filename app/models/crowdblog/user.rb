@@ -1,38 +1,30 @@
-module  Crowdblog
-  class User < ActiveRecord::Base
-    include Gravtastic
+module Crowdblog
+  class User
+    attr_accessor :email
+    attr_accessor :name
+    attr_accessor :id
 
-    has_many :authored_posts, inverse_of: :author, foreign_key: 'author_id', class_name: 'Post'
-    has_many :published_posts, inverse_of: :author, foreign_key: 'author_id', class_name: 'Post', conditions: ['state = ?', 'published'], order: 'published_at DESC'
-    has_one  :last_post, class_name: 'Post', foreign_key: :author_id, conditions: ['state = ?', 'published'], order: 'published_at DESC, created_at DESC, id DESC'
-
-    gravtastic :gravatar_email
-    devise :database_authenticatable, :token_authenticatable, :trackable
-
-    validate :email, uniqueness: true
-
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :is_publisher
-
-    # INSTANCE METHODS
-    def gravatar_email
-      gravatar_alias || email
+    def is_publisher?
+      true
     end
 
-    def last_post_at
-      last_post.try(:published_at)
+    def self.primary_key
+      "id"
     end
 
-    def last_published_at
-      published_posts.first ? published_posts.first.published_at : nil
+    def [](value)
+      []
     end
 
-    def publisher!
-      update_attribute(:is_publisher, true)
+    def destroyed?
+      false
     end
 
-    def to_param
-      [email.split('@').first]
+    def new_record?
+      true
+    end
+
+    def save(*)
     end
   end
 end
-

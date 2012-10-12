@@ -43,7 +43,7 @@ module Crowdblog
       end
 
       describe '#self.scoped_for' do
-        let(:user) { mock_model User, is_publisher?: true }
+        let(:user) { mock(is_publisher?: true) }
 
         context 'user is publisher' do
           it 'should see all the Posts' do
@@ -140,27 +140,17 @@ module Crowdblog
     end
 
     describe "#publish_if_allowed" do
-      let(:user) { Crowdblog::User.new }
       context "user is publisher" do
-        before do
-          user.is_publisher = true
-        end
-
+        let(:user) { stub_model(User, :is_publisher? => true) }
         it "changes its state" do
+          subject.should_receive(:publisher=).with(user)
           subject.should_receive('publish')
           subject.publish_if_allowed('publish', user)
-        end
-
-        it "sets the user as publisher" do
-          subject.publish_if_allowed('publish', user)
-          subject.publisher.should be(user)
         end
       end
 
       context "user is not publisher" do
-        before do
-          user.is_publisher = false
-        end
+        let(:user) { stub_model(User, :is_publisher? => false) }
 
         it "does not change its state" do
           subject.should_not_receive('publish')

@@ -13,6 +13,10 @@ module  Crowdblog
 
     attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :is_publisher
 
+    def self.publishers
+      where(:is_publisher => true)
+    end
+
     # INSTANCE METHODS
     def gravatar_email
       gravatar_alias || email

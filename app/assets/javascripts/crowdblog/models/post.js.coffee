@@ -1,5 +1,3 @@
-<% crowdblog = Crowdblog::Engine.routes.url_helpers %>
-
 class Crowdblog.Models.Post extends Backbone.Model
   paramRoot: 'post'
 

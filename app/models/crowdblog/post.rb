@@ -40,8 +40,9 @@ module  Crowdblog
     # CLASS METHODS
     class << self
       def all_posts_json
-          order_by_publish_date.to_json only: [:id, :title, :state, :published_at, :ready_for_review],
-                                    methods: [:author_email, :published?]
+        includes(:author).
+            order_by_publish_date.to_json only: [:id, :title, :state, :published_at, :ready_for_review],
+                                      methods: [:author_email, :published?]
       end
 
       def by_author(author_id)
@@ -61,7 +62,7 @@ module  Crowdblog
       end
 
       def published_and_ordered
-        published.order_by_publish_date
+        published.order_by_publish_date.includes(:author)
       end
 
       def scoped_for(user)
@@ -69,7 +70,7 @@ module  Crowdblog
       end
 
       def for_admin_index
-        ordered_by_state.order_by_publish_date
+        includes(:author).ordered_by_state.order_by_publish_date
       end
 
       def ordered_by_state

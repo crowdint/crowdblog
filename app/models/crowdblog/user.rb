@@ -1,30 +1,24 @@
 module Crowdblog
-  class User
-    attr_accessor :email
-    attr_accessor :name
-    attr_accessor :id
+  class User < ActiveRecord::Base
+    has_many :authored_posts, inverse_of: :author,
+        foreign_key: 'author_id', class_name: 'Post'
+    has_many :published_posts, inverse_of: :author,
+        foreign_key: 'author_id', class_name: 'Post',
+        conditions: ['state = ?', 'published'], order: 'published_at DESC'
+    has_one  :last_post, class_name: 'Post',
+        foreign_key: :author_id, conditions: ['state = ?', 'published'],
+        order: 'published_at DESC, created_at DESC, id DESC'
 
     def is_publisher?
       true
     end
 
-    def self.primary_key
-      "id"
+    def last_post_at
+      last_post.try(:published_at)
     end
 
-    def [](value)
-      []
-    end
-
-    def destroyed?
-      false
-    end
-
-    def new_record?
-      true
-    end
-
-    def save(*)
+    def last_published_at
+      published_posts.first ? published_posts.first.published_at : nil
     end
   end
 end

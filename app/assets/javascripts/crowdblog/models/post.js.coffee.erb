@@ -4,5 +4,5 @@ class Crowdblog.Models.Post extends Backbone.Model
   paramRoot: 'post'
 
   url: ->
-    '<%= crowdblog.admin_posts_path %>/' + @id
+    Crowdblog.adminPostsPath + '/' + @id
 

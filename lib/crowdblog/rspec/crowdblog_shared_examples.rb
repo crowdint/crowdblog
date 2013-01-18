@@ -7,7 +7,7 @@ shared_examples_for "a crowdblog", :type => :feature do
   describe "Home" do
     it "shows published posts" do
       post.save!
-      post.publish
+      post.publish_as_publisher
 
       visit crowdblog.root_path
 
@@ -69,13 +69,14 @@ shared_examples_for "a crowdblog", :type => :feature do
             button = find_link 'Publish'
             button.click
 
-            page.should have_css 'a.btn-success'
+            page.should have_css '.publish-btn.btn-success'
+            page.should have_css '.review.active'
             post.reload.state.should eq 'published'
           end
         end
 
         it "draftes a post", :js => true do
-          post.publish!
+          post.publish_as_publisher!
 
           visit crowdblog.admin_posts_path
 
@@ -83,23 +84,37 @@ shared_examples_for "a crowdblog", :type => :feature do
             button = find_link 'Publish'
             button.click
 
-            page.should have_css 'a.btn-danger'
+            page.should have_css '.publish-btn.btn-danger'
+            page.should have_css '.draft.active'
             post.reload.state.should eq 'drafted'
           end
         end
 
-        it "marks the post for review", :js => true do
+        it "marks the post as reviewed", :js => true do
+          post.finish!
           visit crowdblog.admin_posts_path
 
           within "#post_#{post.id}" do
-            button = find_link 'Review'
+            button = find_button 'Reviewed'
             button.click
 
-            page.should have_css 'a.btn-warning'
-            post.reload.ready_for_review.should be_true
+            page.should have_css '.review.active'
+            post.reload.state.should eq 'reviewed'
           end
         end
-      end
+
+        it "marks the post as finished", :js => true do
+          visit crowdblog.admin_posts_path
+
+          within "#post_#{post.id}" do
+            button = find_button 'Finished'
+            button.click
+
+            page.should have_css '.finish.active'
+            post.reload.state.should eq 'finished'
+          end
+        end
+       end
     end
   end
 end

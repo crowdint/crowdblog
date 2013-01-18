@@ -51,8 +51,6 @@ module Crowdblog
           @post.save!
         end
 
-        @post.publish_if_allowed(post_params[:transition], current_user) if post_params[:transition]
-
         respond_with @post do |format|
           format.html { redirect_to crowdblog.admin_posts_path }
         end

@@ -17,10 +17,26 @@ module  Crowdblog
 
     state_machine initial: :drafted do
       state :drafted
+      state :finished
+      state :reviewed
+      state :published
+
+      event :finish do
+        transition drafted: :finished
+      end
+
+      event :draft do
+        transition finished: :drafted
+      end
+    end
+
+    state_machine :publisher, attribute: :state, initial: :drafted, namespace: :as_publisher do
+      state :drafted
+      state :finished
+      state :reviewed
       state :published
 
       before_transition on: :publish do |post, transition|
-        #post.update_attribute(:published_at, Time.now)
         post.published_at ||= Time.now
       end
 
@@ -32,8 +48,16 @@ module  Crowdblog
         transition published: :drafted
       end
 
+      event :finish do
+        transition drafted: :finished
+      end
+
+      event :review do
+        transition finished: :reviewed
+      end
+
       event :publish do
-        transition drafted: :published
+        transition all => :published
       end
     end
 

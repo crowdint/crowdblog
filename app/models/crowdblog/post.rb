@@ -24,6 +24,10 @@ module  Crowdblog
       event :finish do
         transition drafted: :finished
       end
+
+      event :draft do
+        transition finished: :drafted
+      end
     end
 
     state_machine :publisher, attribute: :state, initial: :drafted, namespace: :as_publisher do

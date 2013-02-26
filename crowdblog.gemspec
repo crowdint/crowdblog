@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = %w(lib app)
 
-  s.add_dependency 'rails', '~> 3.2'
+  s.add_dependency 'rails', '4.0.0.beta1'
 
   s.add_dependency 'carrierwave'
   s.add_dependency 'gravtastic'

@@ -5,9 +5,9 @@ gemspec
 gem "jquery-rails"
 
 group :assets do
-  gem 'coffee-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
+  gem 'coffee-rails' , '~> 4.0.0.beta1'
+  gem 'sass-rails'   , '~> 4.0.0.beta1'
+  gem 'uglifier'     , '>= 1.0.3'
 end
 
 group :development, :test do

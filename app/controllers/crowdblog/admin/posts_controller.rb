@@ -2,7 +2,6 @@ module Crowdblog
   module Admin
     class PostsController < Crowdblog::Admin::BaseController
       respond_to :html, :json
-      cache_sweeper :post_sweeper
 
       before_filter :load_post, :only => [ :edit, :update, :destroy ]
 

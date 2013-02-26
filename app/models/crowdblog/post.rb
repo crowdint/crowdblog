@@ -102,9 +102,9 @@ module  Crowdblog
     end
 
     # Must be after Class methods (otherwise a missing method error will raise)
-    scope :for_index,     last_published(3)
-    scope :for_history,   last_published(13)
-    scope :all_for_feed,  last_published(15)
+    scope :for_index,     -> { last_published(3) }
+    scope :for_history,   -> { last_published(13) }
+    scope :all_for_feed,  -> { last_published(15) }
 
 
     # INSTANCE METHODS

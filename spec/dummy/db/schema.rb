@@ -9,18 +9,18 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016063750) do
+ActiveRecord::Schema.define(version: 20121016063750) do
 
-  create_table "crowdblog_assets", :force => true do |t|
+  create_table "crowdblog_assets", force: true do |t|
     t.integer  "post_id"
     t.string   "attachment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "crowdblog_posts", :force => true do |t|
+  create_table "crowdblog_posts", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.string   "permalink"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(:version => 20121016063750) do
     t.integer  "publisher_id"
     t.boolean  "ready_for_review"
     t.datetime "marked_for_review_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "crowdblog_users", :force => true do |t|
+  create_table "crowdblog_users", force: true do |t|
     t.string "email"
     t.string "name"
   end

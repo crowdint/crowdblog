@@ -1,7 +1,7 @@
 /*
- *= require         'jquery.min'
- *= require         'underscore-min'
- *= require         'backbone-min.js'
+ *= require         'crowdblog/jquery-1.9.1'
+ *= require         'crowdblog/underscore-1.4.4'
+ *= require         'crowdblog/backbone-0.9.10'
  *= require         'bootstrap.min.js'
  *= require         'jquery_ujs'
  *= require         'backbone_rails_sync'

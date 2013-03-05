@@ -2,12 +2,7 @@ doctype html
 html
   head
     title Crowd Blog
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css"
     = stylesheet_link_tag    :crowdblog, media: 'all'
-    = javascript_include_tag "//code.jquery.com/jquery.min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.1/underscore-min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"
     = javascript_include_tag :crowdblog
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags

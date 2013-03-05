@@ -94,7 +94,7 @@ module  Crowdblog
       end
 
       def for_admin_index
-        includes(:author).ordered_by_state.order_by_publish_date
+        ordered_by_state.order_by_publish_date
       end
 
       def ordered_by_state

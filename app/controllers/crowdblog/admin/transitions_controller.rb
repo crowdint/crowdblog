@@ -3,7 +3,6 @@ module Crowdblog
     class TransitionsController < Crowdblog::Admin::BaseController
       respond_to :json
       before_filter :load_post, only: [:create]
-      cache_sweeper :post_sweeper
 
       def create
         namespace = '_as_publisher' if current_user.is_publisher?

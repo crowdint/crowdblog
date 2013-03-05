@@ -1,4 +1,8 @@
 /*
+ *= require         'jquery.min'
+ *= require         'underscore-min'
+ *= require         'backbone-min.js'
+ *= require         'bootstrap.min.js'
  *= require         'jquery_ujs'
  *= require         'backbone_rails_sync'
  *= require         'markdown'

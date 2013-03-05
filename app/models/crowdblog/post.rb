@@ -86,7 +86,7 @@ module  Crowdblog
       end
 
       def published_and_ordered
-        published.order_by_publish_date.includes(:author)
+        published.order_by_publish_date
       end
 
       def scoped_for(user)

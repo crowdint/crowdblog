@@ -128,13 +128,13 @@ module  Crowdblog
     end
 
     def legacy(string, email)
-      results = string.match(LEGACY_TITLE_REGEXP)
-      self.published_at = "#{results[1]}"
+      string =~ LEGACY_TITLE_REGEXP
+      self.published_at = $1
       user = User.find_by_email(email) || User.create!(email: email)
       self.author = user
       self.save
       self.publish
-      self.update_attribute(:permalink, results[2])
+      self.update_attribute(:permalink, $2)
     end
 
     def month

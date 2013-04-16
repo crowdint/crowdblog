@@ -1,5 +1,9 @@
 shared_examples_for "a crowdblog", :type => :feature do
 
+  before do
+    User.first_or_create :name => 'user', :email => 'user@blog.com'
+  end
+
   let(:post) do
     Crowdblog::Post.create :title => 'A post title', :body => 'A post body'
   end
@@ -20,7 +24,7 @@ shared_examples_for "a crowdblog", :type => :feature do
 
   describe "Admin" do
     describe "manage posts" do
-      it "creates a post", :js => true do
+      it "creates a post", :js => true, focus: true do
         visit crowdblog.admin_posts_path
         click_link 'New Post'
 

@@ -1,7 +1,7 @@
 module  Crowdblog
   class Post < ActiveRecord::Base
-    belongs_to :author, :class_name => Crowdblog.author_user_class_name
-    belongs_to :publisher, :class_name => Crowdblog.publisher_user_class_name
+    belongs_to :author, :class_name => Crowdblog.user_class.name 
+    belongs_to :publisher, :class_name => Crowdblog.user_class.name
     has_many :assets
 
     delegate :name, to: :author, prefix: true, allow_nil: true

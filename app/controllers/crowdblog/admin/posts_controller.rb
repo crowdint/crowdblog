@@ -7,21 +7,21 @@ module Crowdblog
 
       def new
         @post = Post.new
-        @post.author = current_user
+        @post.author = crowdblog_current_user
         @post.save!
         redirect_to edit_admin_post_path(@post)
       end
 
       def index
         @state = params[:state]
-        @posts = Post.scoped_for(current_user).for_admin_index
+        @posts = Post.scoped_for(crowdblog_current_user).for_admin_index
         @posts = @posts.with_state(@state) if @state
         respond_with @posts
       end
 
       def create
         @post = Post.new(post_params)
-        @post.author = current_user
+        @post.author = crowdblog_current_user
         @post.regenerate_permalink
         if @post.save
           respond_with @post, :location => crowdblog.admin_posts_path
@@ -44,7 +44,7 @@ module Crowdblog
       end
 
       def update
-        @post.update_attributes(post_params, updated_by: current_user)
+        @post.update_attributes(post_params, updated_by: crowdblog_current_user)
         if @post.allowed_to_update_permalink?
           @post.regenerate_permalink
           @post.save!
@@ -57,7 +57,7 @@ module Crowdblog
 
       private
       def load_post
-        @post = Post.scoped_for(current_user).find(params[:id])
+        @post = Post.scoped_for(crowdblog_current_user).find(params[:id])
       end
 
       def post_params

@@ -5,7 +5,7 @@ module Crowdblog
       before_filter :load_post, only: [:create]
 
       def create
-        namespace = '_as_publisher' if current_user.is_publisher?
+        namespace = '_as_publisher' if crowdblog_current_user.is_publisher?
         @post.send "#{params[:transition]}#{namespace}"
         respond_with @post, location: admin_post_url(@post)
       end
@@ -13,8 +13,8 @@ module Crowdblog
       private
 
       def load_post
-        post  = Post.scoped_for(current_user).find(params[:id])
-        @post = PostPresenter.new(post, current_user)
+        post  = Post.scoped_for(crowdblog_current_user).find(params[:id])
+        @post = PostPresenter.new(post, crowdblog_current_user)
       end
     end
   end

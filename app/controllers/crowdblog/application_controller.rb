@@ -1,14 +1,14 @@
 module Crowdblog
-  class ApplicationController < ::ApplicationController
-    def method_missing(method_name)
-      if method_name == :current_user
-        Rails.logger.warn("current_user in Crowdblog::ApplicationController should be overriden")
-        User.new
-      elsif method_name == :authenticate_user!
-        Rails.logger.warn("authenticate_user! in Crowdblog::ApplicationController should be overriden")
-      end
+   class ApplicationController < ::ApplicationController
+
+    helper_method :crowdblog_current_user, :crowdblog_authenticate_user!
+    
+    def crowdblog_current_user
+      current_user
     end
 
-    helper_method :current_user
+    def crowdblog_authenticate_user!
+      authenticate_user!
+    end
   end
 end

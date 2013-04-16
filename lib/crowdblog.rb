@@ -15,8 +15,9 @@ module Crowdblog
 
   class << self
     def user_class
+      puts 'erkfjeorfjeorifjeorfjeorfj'
       if @@user_class.is_a?(Class)
-        raise StandardError.new 'Karma user_class must be defined as string'
+        raise StandardError.new 'Crowdblog user_class must be defined as string'
 
       elsif @@user_class.is_a?(String)
         begin

@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'slim'
   s.add_dependency 'state_machine'
   s.add_dependency 'strong_parameters'
+  s.add_dependency 'colorize'
 
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'database_cleaner'

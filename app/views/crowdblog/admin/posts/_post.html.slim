@@ -15,6 +15,6 @@
         - if crowdblog_current_user.is_publisher?
           button.btn.btn-small.review Reviewed
     td.span1
-      = link_to 'Delete', crowdblog.admin_post_path(post), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-small"
+      = link_to 'Delete', crowdblog.admin_post_path(post), :method => :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-small"
     td.span1
       = link_to 'Edit', crowdblog.edit_admin_post_path(post), class: "btn btn-small"

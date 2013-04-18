@@ -15,3 +15,5 @@ Gemfile.lock
 tmp
 
 .idea/
+
+.un~

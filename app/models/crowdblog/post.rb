@@ -11,7 +11,6 @@ module  Crowdblog
     delegate :year, to: :published_at
 
     attr_accessor :transition
-    attr_accessible :title, :body, :updated_by, :ready_for_review, :transition
 
     LEGACY_TITLE_REGEXP = /(\d+-\d+-\d+)-(.*)/
 

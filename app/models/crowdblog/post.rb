@@ -89,7 +89,7 @@ module  Crowdblog
       end
 
       def scoped_for(user)
-        user.is_publisher? ? scoped : user.authored_posts
+        user.is_publisher? ? all : user.authored_posts
       end
 
       def for_admin_index
@@ -102,9 +102,9 @@ module  Crowdblog
     end
 
     # Must be after Class methods (otherwise a missing method error will raise)
-    scope :for_index,     last_published(3)
-    scope :for_history,   last_published(13)
-    scope :all_for_feed,  last_published(15)
+    scope :for_index,   ->  { last_published(3) }
+    scope :for_history, ->  { last_published(13) }
+    scope :all_for_feed, -> { last_published(15) }
 
 
     # INSTANCE METHODS

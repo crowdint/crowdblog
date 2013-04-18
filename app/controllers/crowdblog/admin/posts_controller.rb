@@ -7,6 +7,7 @@ module Crowdblog
 
       def new
         @post = Post.new
+        @post.state = :drafted
         @post.author = crowdblog_current_user
         @post.save!
         redirect_to edit_admin_post_path(@post)
@@ -44,7 +45,7 @@ module Crowdblog
       end
 
       def update
-        @post.update_attributes(post_params, updated_by: crowdblog_current_user)
+        @post.update_attributes(post_params)        
         if @post.allowed_to_update_permalink?
           @post.regenerate_permalink
           @post.save!

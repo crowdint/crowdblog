@@ -5,7 +5,7 @@ shared_examples_for "a crowdblog", :type => :feature do
   end
 
   let(:post) do
-    Crowdblog::Post.create :title => 'A post title', :body => 'A post body'
+    Crowdblog::Post.create :title => 'A post title', :body => 'A post body', :state => :drafted
   end
 
   describe "Home" do

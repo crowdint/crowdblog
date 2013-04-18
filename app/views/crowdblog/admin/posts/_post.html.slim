@@ -5,7 +5,7 @@
     td.span2.published-at = post.published_at.try(:to_s, :crowdblog_short)
     td.span1
       - if crowdblog_current_user.is_publisher?
-        = link_to 'Publish', '#', :class => "btn btn-small publish-btn btn-danger #{(post.published? ? 'draft' : 'publish')}"
+        = link_to 'Publish', '#', class: "btn btn-small publish-btn btn-danger #{(post.published? ? 'draft' : 'publish')}"
     td.span1
       .btn-group.states
         button.btn.btn-small.draft Drafted
@@ -17,4 +17,4 @@
     td.span1
       = link_to 'Delete', crowdblog.admin_post_path(post), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-small"
     td.span1
-      = link_to 'Edit', crowdblog.edit_admin_post_path(post), :class => "btn btn-small"
+      = link_to 'Edit', crowdblog.edit_admin_post_path(post), class: "btn btn-small"

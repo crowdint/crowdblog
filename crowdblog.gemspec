@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = %w(lib app)
 
-  s.add_dependency 'rails', '~> 3.2'
+  s.add_dependency 'rails', '4.0.0.beta1'
 
   s.add_dependency 'carrierwave'
   s.add_dependency 'gravtastic'
@@ -25,12 +25,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet'
   s.add_dependency 'slim'
   s.add_dependency 'state_machine'
-  s.add_dependency 'strong_parameters'
+  s.add_dependency 'colorize'
+  s.add_dependency 'sprockets-rails'
 
   s.add_development_dependency 'capybara-webkit'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'

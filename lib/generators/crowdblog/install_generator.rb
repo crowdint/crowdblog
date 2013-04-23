@@ -82,7 +82,7 @@ helper_method :crowdblog_current_user, :crowdblog_authenticate_user!
 # If you would like to change where this extension is mounted, simply change the :at option to something different.
 #
 # We ask that you don't use the :as option here, as Forem relies on it being the default of "crowdblog"
-mount Crowdblog::Engine, :at => '/blog'
+mount Crowdblog::Engine => '/blog'
 
 }
       end

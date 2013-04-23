@@ -23,6 +23,6 @@ class Crowdblog.Models.Post extends Backbone.Model
   performTransition: (transition, success)->
     $.ajax
       type: 'POST'
-      url:  "/admin/posts/#{@id}/#{transition}"
+      url:  Crowdblog.rootPath+"admin/posts/#{@id}/#{transition}"
       dataType: 'json'
       success: success

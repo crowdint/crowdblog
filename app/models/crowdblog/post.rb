@@ -1,7 +1,7 @@
 module  Crowdblog
   class Post < ActiveRecord::Base
-    belongs_to :author, :class_name => Crowdblog.author_user_class_name
-    belongs_to :publisher, :class_name => Crowdblog.publisher_user_class_name
+    belongs_to :author, :class_name => Crowdblog.user_class.name 
+    belongs_to :publisher, :class_name => Crowdblog.user_class.name
     has_many :assets
 
     delegate :name, to: :author, prefix: true, allow_nil: true
@@ -11,7 +11,6 @@ module  Crowdblog
     delegate :year, to: :published_at
 
     attr_accessor :transition
-    attr_accessible :title, :body, :updated_by, :ready_for_review, :transition
 
     LEGACY_TITLE_REGEXP = /(\d+-\d+-\d+)-(.*)/
 
@@ -90,7 +89,7 @@ module  Crowdblog
       end
 
       def scoped_for(user)
-        user.is_publisher? ? scoped : user.authored_posts
+        user.is_publisher? ? all : user.authored_posts
       end
 
       def for_admin_index
@@ -103,9 +102,9 @@ module  Crowdblog
     end
 
     # Must be after Class methods (otherwise a missing method error will raise)
-    scope :for_index,     last_published(3)
-    scope :for_history,   last_published(13)
-    scope :all_for_feed,  last_published(15)
+    scope :for_index,   ->  { last_published(3) }
+    scope :for_history, ->  { last_published(13) }
+    scope :all_for_feed, -> { last_published(15) }
 
 
     # INSTANCE METHODS

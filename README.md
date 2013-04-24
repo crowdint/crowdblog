@@ -28,11 +28,11 @@ Run installer
 
     rails generate crowdblog:installer
 
-Uou will be asked for the name of some methods that you use in your main application and will allow crowdblog to create the wrappers needed for the engine to communicate with your application
+You will be asked for the name of some methods implemented in your host application that will allow crowdblog to create the wrappers needed for the engine to communicate with the host.
 
 ### About the installer
 
-Since the engine does not handle neither the authentication nor the logic of the users, you host application needs to provide the name of the model that contains users' information. Eventhough 'User' is used by default, this model is not tied to a specific name but it is required that the model has at least two fields: name and email. 
+Since the engine does not handle neither the authentication nor the logic of the users, the application that mounts the engined needs to provide the name of the model that contains the users' information. Although 'User' is used by default, this model is not tied to a specific name but it is required that the model has at least two fields: name and email. 
 
 You also have to create methods equivalent to the functionality of the following ones:
 
@@ -44,9 +44,7 @@ This method must return the object of the User class that corresponde to the use
 
 Returns a boolean value indicating if the current user is allowed to access the application.
 
-
-
-These methods must be implemented in your application\_controller and can be named however you want but must have exactly the same name that the indicated when using the installer.
+These methods must be implemented in your application\_controller and can be named however you want but must have exactly the same name indicated when using the installer.
 
 Run your host application and go to /blog to access the engine.
 

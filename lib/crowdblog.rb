@@ -1,4 +1,5 @@
 require "crowdblog/engine"
+require "crowdblog/query/user_query"
 
 require "carrierwave"
 require "gravtastic"

@@ -1,7 +1,7 @@
 module Crowdblog
   module Query
     class UserQuery
-      def initialize(scope = Crowdblog.user_class_name)
+      def initialize(scope = Crowdblog.user_class)
         @scope = scope
       end
 

@@ -1,7 +1,7 @@
 shared_examples_for "a crowdblog", :type => :feature do
 
   before do
-    User.first_or_create :name => 'user', :email => 'user@blog.com'
+    Crowdblog.user_class.first_or_create :name => 'user', :email => 'user@blog.com'
   end
 
   let(:post) do

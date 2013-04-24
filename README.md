@@ -9,44 +9,47 @@ Code Climate:
 Generic Blog engine, currently in use by [blog.crowdint.com](blog.crowdint.com)
 and [crowdint.com/careers](crowdint.com/careers), among others.
 
+This branch has two majors changes:
+
+- Supports rails4.0.0-beta1 (and will support newer versions in the 4.x branch)
+- Does not contain logic for the User model and delegates its implementation to the host application (see 'About the installer section').
+
 ## Installation
 
 Gemfile
 
-    gem 'crowdblog'
+    gem 'crowdblog', github: 'crowdint/crowdblog', branch: 'rails4-userless'
 
 Bundle
 
     bundle install
 
-Copy migrations
+Run installer
 
-    rake crowdblog:install:migrations
+    rails generate crowdblog:installer
 
-Run them
+You will be asked for the name of some methods implemented in your host application that will allow crowdblog to create the wrappers needed for the engine to communicate with the host.
 
-    rake db:migrate
+### About the installer
 
-Mount
+Since the engine does not handle neither the authentication nor the logic of the users, the application that mounts the engined needs to provide the name of the model that contains the users' information. Although 'User' is used by default, this model is not tied to a specific name but it is required that the model has at least two fields: name and email. 
 
-    #
-    # routes.rb
-    #
+You also have to create methods equivalent to the functionality of the following ones:
 
-    mount Crowdblog::Engine => '/blog_admin'
+##### crowdblog\_current\_user
 
-Enjoy.
+This method must return the object of the User class that corresponde to the user who is currently logged in
+
+##### crowdblog\_authenticate_user!
+
+Returns a boolean value indicating if the current user is allowed to access the application.
+
+These methods must be implemented in your application\_controller and can be named however you want but must have exactly the same name indicated when using the installer.
+
+Run your host application and go to /blog to access the engine.
 
 Your Rails App should implement the "client facing" pages. Read posts from the
 Crowdblog::Post model.
-
-### Authentication
-
-The gem includes a very basic Devise implementation. We use it in combination
-with [this gem](https://github.com/crowdint/crowdint_auth) to authenticate
-via our Google Apps accounts.
-
-Take a look [at this code](https://github.com/crowdint/blog.crowdint.com) as an implementation example.
 
 ## Testing: Use with caution
 

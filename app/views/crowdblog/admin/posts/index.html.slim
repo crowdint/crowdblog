@@ -16,12 +16,13 @@
   #posts.container
     table.table.table-striped= render :partial => 'post', :collection => @posts
 
+  = crowdblog.admin_posts_path
   - content_for :scripts do
     javascript:
         $(function() {
           return $('tr.post').each(function(index, el) {
-            Crowdblog.adminPostsPath = '#{crowdblog.admin_posts_path.html_safe}';
-            Crowdblog.rootPath = '#{crowdblog.root_path.html_safe}';
+            Crowdblog.adminPostsPath = '#{crowdblog.admin_posts_path}';
+            Crowdblog.rootPath = '#{crowdblog.root_path}';
             return new Crowdblog.Views.PostView({
               el: el
             });

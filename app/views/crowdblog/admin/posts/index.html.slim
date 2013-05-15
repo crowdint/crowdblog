@@ -20,8 +20,8 @@
     javascript:
         $(function() {
           return $('tr.post').each(function(index, el) {
-            Crowdblog.adminPostsPath = '#{crowdblog.admin_posts_path}';
-            Crowdblog.rootPath = '#{crowdblog.root_path}';
+            Crowdblog.adminPostsPath = '#{crowdblog.admin_posts_path.html_safe}';
+            Crowdblog.rootPath = '#{crowdblog.root_path.html_safe}';
             return new Crowdblog.Views.PostView({
               el: el
             });

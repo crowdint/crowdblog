@@ -115,7 +115,7 @@ module Crowdblog
       let(:string) { '2012-12-29-This_is_a_test' }
       before do
         subject.should_receive(:published_at=).with('2012-12-29')
-        User.should_receive(:find_by_email).and_return 'FOO'
+        ::User.should_receive(:find_by_email).and_return 'FOO'
         subject.should_receive(:author=).with('FOO')
         subject.should_receive(:save)
         subject.should_receive(:publish)
@@ -141,7 +141,7 @@ module Crowdblog
 
     describe "#publish_if_allowed" do
       context "user is publisher" do
-        let(:user) { stub_model(User, :is_publisher? => true) }
+        let(:user) { stub_model(::User, :is_publisher? => true) }
         it "changes its state" do
           subject.should_receive(:publisher=).with(user)
           subject.should_receive('publish')
@@ -150,7 +150,7 @@ module Crowdblog
       end
 
       context "user is not publisher" do
-        let(:user) { stub_model(User, :is_publisher? => false) }
+        let(:user) { stub_model(::User, :is_publisher? => false) }
 
         it "does not change its state" do
           subject.should_not_receive('publish')

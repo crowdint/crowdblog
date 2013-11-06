@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20121016063750) do
     t.datetime "updated_at"
   end
 
-  create_table "crowdblog_users", force: true do |t|
+  create_table "users", force: true do |t|
     t.string "email"
     t.string "name"
   end

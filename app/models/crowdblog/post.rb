@@ -126,16 +126,6 @@ module  Crowdblog
       @@renderer.render(self.body).html_safe
     end
 
-    def legacy(string, email)
-      results = string.match(LEGACY_TITLE_REGEXP)
-      self.published_at = "#{results[1]}"
-      user = User.find_by_email(email) || User.create!(email: email)
-      self.author = user
-      self.save
-      self.publish
-      self.update_attribute(:permalink, results[2])
-    end
-
     def month
       "%02d" % published_at.month
     end

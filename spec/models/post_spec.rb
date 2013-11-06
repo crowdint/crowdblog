@@ -111,22 +111,6 @@ module Crowdblog
       end
     end
 
-    describe '#legacy' do
-      let(:string) { '2012-12-29-This_is_a_test' }
-      before do
-        subject.should_receive(:published_at=).with('2012-12-29')
-        ::User.should_receive(:find_by_email).and_return 'FOO'
-        subject.should_receive(:author=).with('FOO')
-        subject.should_receive(:save)
-        subject.should_receive(:publish)
-        subject.should_receive(:update_attribute).with(:permalink, 'This_is_a_test')
-      end
-
-      it 'should update a Post from legacy URL' do
-        subject.legacy(string, 'foo@bar.com')
-      end
-    end
-
     describe "#month" do
       context "published at in february" do
         before do

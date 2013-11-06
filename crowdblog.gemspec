@@ -16,22 +16,21 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = %w(lib app)
 
-  s.add_dependency 'rails', '4.0.0.beta1'
+  s.add_dependency 'rails', '~> 4.0.0'
 
-  s.add_dependency 'carrierwave'
-  s.add_dependency 'gravtastic'
+  s.add_dependency 'carrierwave', '~> 0.9.0'
+  s.add_dependency 'gravtastic', '~> 3.2.6'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jbuilder'
-  s.add_dependency 'redcarpet'
-  s.add_dependency 'slim'
-  s.add_dependency 'state_machine'
+  s.add_dependency 'redcarpet', '~> 3.0.0'
+  s.add_dependency 'slim', '~> 2.0.2'
+  s.add_dependency 'state_machine', '~> 1.2.0'
 
-  s.add_development_dependency 'autotest'
-  s.add_development_dependency 'autotest-growl'
-  s.add_development_dependency 'capybara-webkit'
+  s.add_development_dependency 'capybara-webkit', '~> 1.0.0'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'

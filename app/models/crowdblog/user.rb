@@ -2,12 +2,18 @@ module Crowdblog
   class User < ActiveRecord::Base
     has_many :authored_posts, inverse_of: :author,
         foreign_key: 'author_id', class_name: 'Post'
-    has_many :published_posts, -> { where :state => 'published' }, inverse_of: :author,
-        foreign_key: 'author_id', class_name: 'Post',
-        order: 'published_at DESC'
-  	has_one  :last_post, -> { where :state => 'published' }, class_name: 'Post',
-  			foreign_key: :author_id,
-  			order: 'published_at DESC, created_at DESC, id DESC'
+    has_many :published_posts, -> {
+          where(state: 'published').
+          order('published_at DESC')
+        },
+        inverse_of: :author,
+        foreign_key: 'author_id', class_name: 'Post'
+    has_one  :last_post, -> {
+          where(state: 'published').
+          order('published_at DESC, created_at DESC, id DESC')
+        },
+        class_name: 'Post',
+        foreign_key: :author_id
 
     def is_publisher?
       true

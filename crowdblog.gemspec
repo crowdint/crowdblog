@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/crowdint/crowdblog'
   s.summary     = 'CrowdBlog base functionality and backend'
   s.description = 'This mountable engine has the basic functionality to manage Posts'
+  s.license     = 'MIT'
 
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files         = `git ls-files`.split("\n")

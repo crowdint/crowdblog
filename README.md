@@ -6,8 +6,8 @@ CI:
 Code Climate:
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/crowdint/crowdblog)
 
-Generic Blog engine, currently in use by [blog.crowdint.com](blog.crowdint.com)
-and [crowdint.com/careers](crowdint.com/careers), among others.
+Generic Blog engine, currently in use by [blog.crowdint.com](http://blog.crowdint.com)
+and [crowdint.com/careers](http://crowdint.com/careers), among others.
 
 ## Installation
 

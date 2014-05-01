@@ -42,11 +42,11 @@ module Crowdblog
       end
 
       describe '#self.scoped_for' do
-        let(:user) { mock(is_publisher?: true) }
+        let(:user) { double(is_publisher?: true) }
 
         context 'user is publisher' do
           it 'should see all the Posts' do
-            Post.scoped_for(user).should == Post.scoped
+            Post.scoped_for(user).should == Post.all
           end
         end
 

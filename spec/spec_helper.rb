@@ -8,6 +8,7 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'crowdblog/rspec'
 require 'database_cleaner'
+require 'coffee_script'
 
 ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 

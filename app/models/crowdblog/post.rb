@@ -3,6 +3,7 @@ module  Crowdblog
     belongs_to :author, :class_name => Crowdblog.author_user_class_name
     belongs_to :publisher, :class_name => Crowdblog.publisher_user_class_name
     has_many :assets
+    has_many :status_change_records
 
     delegate :name, to: :author, prefix: true, allow_nil: true
     delegate :email, to: :author, prefix: true, allow_nil: true

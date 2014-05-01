@@ -7,6 +7,8 @@ module Crowdblog
       def create
         namespace = '_as_publisher' if current_user.is_publisher?
         @post.send "#{params[:transition]}#{namespace}"
+        status = @post.status_change_records.build(user: current_user, state: params[:transition])
+        status.save
         respond_with @post, location: admin_post_url(@post)
       end
 

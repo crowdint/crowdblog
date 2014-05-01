@@ -71,6 +71,8 @@ shared_examples_for "a crowdblog", :type => :feature do
             page.should have_css '.publish-btn.btn-success'
             page.should have_css '.review.active'
             post.reload.state.should eq 'published'
+            post.status_change_records.last.state.should == 'publish'
+            post.status_change_records.last.user.should  == ::User.last
           end
         end
 
@@ -86,6 +88,8 @@ shared_examples_for "a crowdblog", :type => :feature do
             page.should have_css '.publish-btn.btn-danger'
             page.should have_css '.draft.active'
             post.reload.state.should eq 'drafted'
+            post.status_change_records.last.state.should == 'draft'
+            post.status_change_records.last.user.should  == ::User.last
           end
         end
 
@@ -99,6 +103,8 @@ shared_examples_for "a crowdblog", :type => :feature do
 
             page.should have_css '.review.active'
             post.reload.state.should eq 'reviewed'
+            post.status_change_records.last.state.should == 'review'
+            post.status_change_records.last.user.should  == ::User.last
           end
         end
 
@@ -111,6 +117,8 @@ shared_examples_for "a crowdblog", :type => :feature do
 
             page.should have_css '.finish.active'
             post.reload.state.should eq 'finished'
+            post.status_change_records.last.state.should == 'finish'
+            post.status_change_records.last.user.should  == ::User.last
           end
         end
        end

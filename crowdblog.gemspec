@@ -28,11 +28,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'state_machine', '~> 1.2.0'
 
   s.add_development_dependency 'capybara-webkit', '~> 1.0.0'
-  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'database_cleaner', '~> 1.2.0'
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'simplecov', '~> 0.8.2'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'
 end

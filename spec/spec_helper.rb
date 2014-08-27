@@ -5,6 +5,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'rspec/active_model/mocks'
 require 'capybara/rspec'
 require 'crowdblog/rspec'
 require 'database_cleaner'
@@ -40,6 +41,8 @@ RSpec.configure do |config|
 
   # Include Engine routes (needed for Controller specs)
   config.include Crowdblog::Engine.routes.url_helpers
+
+  config.include Capybara::DSL
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

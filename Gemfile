@@ -3,11 +3,12 @@ source "http://rubygems.org"
 gemspec
 
 gem "jquery-rails"
+gem 'nokogiri', '= 1.6.3'
 
 group :assets do
-  gem 'coffee-rails', '~> 4.0.1'
-  gem 'sass-rails'  , '~> 4.0.1'
-  gem 'uglifier'    , '~> 2.3.0'
+  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails'  , '~> 4.0.0'
+  gem 'uglifier'    , '~> 2.5.0'
 end
 
 group :development, :test do

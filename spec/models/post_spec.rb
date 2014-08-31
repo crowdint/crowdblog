@@ -68,7 +68,7 @@ module Crowdblog
         end
 
         it "returns false" do
-          subject.allowed_to_update_permalink?.should be_false
+          subject.allowed_to_update_permalink?.should be_falsey
         end
       end
 
@@ -78,7 +78,7 @@ module Crowdblog
         end
 
         it "returns true" do
-          subject.allowed_to_update_permalink?.should be_true
+          subject.allowed_to_update_permalink?.should be_truthy
         end
       end
     end

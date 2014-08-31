@@ -8,7 +8,7 @@ shared_examples_for "a crowdblog", :type => :feature do
       post.save!
       post.publish_as_publisher
 
-      visit crowdblog.root_path
+      visit root_path
 
       within "#post_#{post.id}" do
         page.should have_content post.title
@@ -20,14 +20,14 @@ shared_examples_for "a crowdblog", :type => :feature do
   describe "Admin" do
     describe "manage posts" do
       it "creates a post", :js => true do
-        visit crowdblog.admin_posts_path
+        visit admin_posts_path
         click_link 'New Post'
 
         fill_in 'Title', :with => 'A post title'
         fill_in 'Body' , :with => 'A post body'
         click_button 'Update'
 
-        page.current_path.should == crowdblog.admin_posts_path
+        page.current_path.should == admin_posts_path
         page.should have_content 'A post title'
       end
 
@@ -38,7 +38,7 @@ shared_examples_for "a crowdblog", :type => :feature do
         end
 
         it "edits a post" do
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
           within "#post_#{post.id}" do
             click_link 'Edit'
           end
@@ -47,22 +47,22 @@ shared_examples_for "a crowdblog", :type => :feature do
           fill_in 'Body' , :with => 'A NEW post body'
           click_button 'Update'
 
-          page.current_path.should == crowdblog.admin_posts_path
+          page.current_path.should == admin_posts_path
           page.should have_content 'A NEW post title'
         end
 
         it "deletes a post" do
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
 
           within "#post_#{post.id}" do
             click_link 'Delete'
           end
-          page.current_path.should == crowdblog.admin_posts_path
+          page.current_path.should == admin_posts_path
           page.should_not have_content 'A post title'
         end
 
         it "publishes a post", :js => true do
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
 
           within "#post_#{post.id}" do
             button = find_link 'Publish'
@@ -79,7 +79,7 @@ shared_examples_for "a crowdblog", :type => :feature do
         it "draftes a post", :js => true do
           post.publish_as_publisher!
 
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
 
           within "#post_#{post.id}" do
             button = find_link 'Publish'
@@ -95,7 +95,7 @@ shared_examples_for "a crowdblog", :type => :feature do
 
         it "marks the post as reviewed", :js => true do
           post.finish!
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
 
           within "#post_#{post.id}" do
             button = find_button 'Reviewed'
@@ -109,7 +109,7 @@ shared_examples_for "a crowdblog", :type => :feature do
         end
 
         it "marks the post as finished", :js => true do
-          visit crowdblog.admin_posts_path
+          visit admin_posts_path
 
           within "#post_#{post.id}" do
             button = find_button 'Finished'

@@ -4,6 +4,7 @@ require "carrierwave"
 require "gravtastic"
 require "jbuilder"
 require "redcarpet"
+require "responders"
 require "slim"
 require "state_machine"
 

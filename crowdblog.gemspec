@@ -17,13 +17,14 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = %w(lib app)
 
-  s.add_dependency 'rails', '~> 4.1.0'
+  s.add_dependency 'rails', '~> 4.1'
 
   s.add_dependency 'carrierwave', '~> 0.10.0'
   s.add_dependency 'gravtastic', '~> 3.2.6'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jbuilder'
   s.add_dependency 'redcarpet', '~> 3.1.0'
+  s.add_dependency 'responders', '~> 2.0'
   s.add_dependency 'slim', '~> 2.0.0'
   s.add_dependency 'state_machine', '~> 1.2.0'
 

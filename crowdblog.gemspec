@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fuubar'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rspec-activemodel-mocks'
-  s.add_development_dependency 'selenium-webdriver'
+  s.add_development_dependency 'selenium-webdriver', '>=2.45.0.dev3'
   s.add_development_dependency 'simplecov', '~> 0.9.0'
   s.add_development_dependency 'simplecov-rcov-text'
   s.add_development_dependency 'sqlite3'

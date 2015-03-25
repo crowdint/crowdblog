@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jbuilder'
   s.add_dependency 'redcarpet', '~> 3.1.0'
-  s.add_dependency 'responders', '~> 2.0'
+  s.add_dependency 'responders'
   s.add_dependency 'slim', '~> 2.0.0'
   s.add_dependency 'state_machine', '~> 1.2.0'
 

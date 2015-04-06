@@ -125,7 +125,8 @@ module  Crowdblog
       @@renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
                                              :autolink => true,
                                              :fenced_code_blocks => true,
-                                             :space_after_headers => false)
+                                             :space_after_headers => false,
+                                             :tables => true)
       @@renderer.render(self.body).html_safe
     end
 

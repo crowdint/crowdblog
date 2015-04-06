@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+### 0.6.2
+* Add support for tables
 
 ### 0.6.1
 * Add ability to use fenced_code_blocks: Now you'll be able to write code block within
